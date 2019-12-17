@@ -1,6 +1,6 @@
 public class Metadata
 {
-    private int pilaaaaaaaaaa;
+    private int id;
     private int year;
     private String title;
     private String artist;
