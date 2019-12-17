@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class SDCloud implements SDCloudInterface, Serializable {
     private Map<Integer,Music> library;
+    //TEST
     private Map<Integer,String > users;
 
     public SDCloud(){
