@@ -4,10 +4,12 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class SDCloud implements SDCloudInterface, Serializable {
     private Map<Integer,Music> library;
     //TEST
     private Map<Integer,String > users;
+    private int test;
 
     public SDCloud(){
         library = new HashMap<Integer,Musica>();
@@ -28,6 +30,7 @@ public class SDCloud implements SDCloudInterface, Serializable {
             e.printStackTrace();
         }
     }
+
 
     public SDCloud(SDCloud sd) {
         this.library = sd.getLib();
