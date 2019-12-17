@@ -1,6 +1,5 @@
 public class Metadata
 {
-    private int id;
     private int year;
     private String title;
     private String artist;
@@ -17,9 +16,8 @@ public class Metadata
         //list
     }
 
-    public Metadata(int id, int year, String title, String artist, int nDownloads)
+    public Metadata(int year, String title, String artist, int nDownloads)
     {
-        this.id = id;
         this.year = year;
         this.title = title;
         this.artist = artist;
@@ -28,7 +26,6 @@ public class Metadata
 
     public Metadata(Metadata m)
     {
-        this.id = m.getID();
         this.year = m.getYear();
         this.title = m.getTitle();
         this.artist = m.getArtist();
@@ -36,14 +33,12 @@ public class Metadata
     }
 
 
-    public int getID(){return this.id;}
     public int getYear(){return this.year;}
     public String getTitle(){return this.title;}
     public String getArtist(){return this.artist;}
     public int getnDownloads(){return this.nDownloads;}
     //LIST
 
-    public void setID(int id){this.id = id;}
     public void setYear(int y){this.year = y;}
     public void setTitle(String t){this.title = t;}
     public void setArtist(String a){this.artist = a;}
