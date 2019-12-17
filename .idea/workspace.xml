@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e40b8cc1-79ba-4663-be18-57a99b27d742" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SDCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SDCloud.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576600539949</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="teste">
+      <created>1576600822764</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1576600822764</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,14 +181,20 @@
     <option name="LAST_COMMIT_MESSAGE" value="teste" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="301" y="55" key="CommitChangelistDialog2" timestamp="1576584772204">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="557" y="288" width="308" height="216" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1576600969848">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="557" y="288" width="308" height="216" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/67.27.1299.741@67.27.1299.741" timestamp="1576600969848" />
+    <state x="354" y="27" width="860" height="741" key="CommitChangelistDialog2" timestamp="1576600822387">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="301" y="55" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1576584772204" />
-    <state x="320" y="191" key="Vcs.Push.Dialog.v2" timestamp="1576584259832">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="354" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1576600822387" />
+    <state x="356" y="184" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1576600825060">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="320" y="191" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1576584259832" />
+    <state x="356" y="184" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1576600825060" />
     <state x="374" y="284" key="com.intellij.ide.util.TipDialog" timestamp="1576584761258">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

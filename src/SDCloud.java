@@ -9,7 +9,7 @@ public class SDCloud implements SDCloudInterface, Serializable {
     private Map<Integer,Music> library;
     //TEST
     private Map<Integer,String > users;
-    private int test;
+    private int tst;
 
     public SDCloud(){
         library = new HashMap<Integer,Musica>();
