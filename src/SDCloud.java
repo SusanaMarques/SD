@@ -12,7 +12,7 @@ public class SDCloud implements SDCloudInterface, Serializable {
     private int tst;
 
     public SDCloud(){
-        library = new HashMap<Integer,Musica>();
+        library = new HashMap<Integer,Music>();
         users = new HashMap<>();
     }
 
@@ -24,7 +24,6 @@ public class SDCloud implements SDCloudInterface, Serializable {
             ooj = new ObjectInputStream(new FileInputStream(relativePath+"usr.txt"));
             this.users = (Map<Integer, User>) ooj.readObject();
             ooj.close();
-
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

@@ -8,7 +8,6 @@ public class Metadata
 
     public Metadata()
     {
-        this.id = 0;
         this.year = 0;
         this.title = "N/D";
         this.artist = "N/D";
@@ -52,8 +51,7 @@ public class Metadata
         if(this == o) return true;
         if(o == null && this.getClass() != o.getClass()) return false;
         Metadata m = (Metadata) o;
-        return  this.id == m.getID() &&
-                this.year == m.getYear() &&aaaaaaaaaa;
+        return  this.year == m.getYear() &&
                 this.title.equals(m.getTitle()) &&
                 this.artist.equals(m.getArtist()) &&
                 this.nDownloads == m.getnDownloads(); //FALTA A LISTA
