@@ -2,8 +2,8 @@ package Server;
 
 public class User
 {
-    /** Email do Utilizador **/
-    private String email;
+    /** Username do Utilizador **/
+    private String username;
     /** Password do Utilizador **/
     private String password;
     /** Buffer de mensagens do utilizador **/
@@ -11,20 +11,20 @@ public class User
 
     /**
      * Construtor da classe User com parâmetros
-     * @param email        Email do utilizador
+     * @param username     Username do utilizador
      * @param password     Password do utilizador
      */
-    public User(String email, String password) {
-        this.email = email;
+    public User(String username, String password) {
+        this.username = username;
         this.password = password;
         this.msg = new MsgBuffer();
     }
 
     /**
-     * Método que devolve o email do utilizador
-     * @return           Email do utilizador
+     * Método que devolve o usernamedo utilizador
+     * @return           Username do utilizador
      */
-    public String getEmail() { return this.email; }
+    public String getUsername() { return this.username; }
 
     /**
      * Método que devolve a password do utilizador
@@ -37,12 +37,6 @@ public class User
      * @return        Buffer de mensagens do utilizador
      */
     public MsgBuffer getMsg() { return this.msg; }
-
-    /**
-     * Método que atualiza o email do utilizador
-     * @param e            Novo email do utilizador
-     */
-    public void setEmail(String e){ this.email = e; }
 
     /**
      * Método que atualiza a password do utilizador
@@ -65,7 +59,7 @@ public class User
         if (o == this) return true;
         if (o == null || (this.getClass() != o.getClass())) return false;
         User u = (User) o;
-        return email.equals(u.email);
+        return username.equals(u.username);
     }
 
     /**
