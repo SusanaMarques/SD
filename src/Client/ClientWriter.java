@@ -70,7 +70,7 @@ public class ClientWriter implements Runnable
     }
 
     /**
-     * Método que indica ao servidor que pretende terminar sessão
+     * Método que indica ao servidor que o utilizador pretende  terminar sessão
      * @throws IOException
      */
     private void logout() throws IOException {
@@ -91,6 +91,30 @@ public class ClientWriter implements Runnable
         out.newLine();
         out.flush();
     }
+
+    /**
+     * Método que indica ao servidor que o utilizador pretende fazer download de um ficheiro
+     * @throws IOException
+     */
+    private void download() throws IOException{
+        String id = menu.readString("Id: ");
+        String q = String.join(" ", "DOWNLOAD", id);
+        out.write(q);
+        out.newLine();
+        out.flush();
+    }
+
+    /**
+     * Método que indica ao servidor que o utilizador pretende fazer upload de um ficheiro
+     * @throws IOException
+     */
+    private void upload() throws IOException{ }
+
+    /**
+     * Método que indica ao servidor que o utilizador pretende procurar uma música
+     * @throws IOException
+     */
+    private void search() throws IOException{ }
 
 
 }

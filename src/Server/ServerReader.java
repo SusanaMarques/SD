@@ -73,6 +73,12 @@ public class ServerReader implements Runnable
             case "REGISTAR":
                 autentication(false);
                 return this.registration(p[1]);
+            case "DOWNLOAD":
+                //return this.download(p[1]);
+            case "UPLOAD":
+                //return this.upload(p[1]);
+            case "SEARCH":
+                //return this.search(p[1]);
             default:
                 return "ERRO";
         }
@@ -126,5 +132,39 @@ public class ServerReader implements Runnable
         if (!status && user != null)
             throw new InvalidRequestException("Já existe um utilizador autentidaco");
     }
+
+    /**
+     * Método que efetua um download
+     * @param in       Linha lida do BufferedReader
+     * @return         String
+
+    private String download(String in) {
+        int id = Integer.parseInt(in);
+        ....
+        sdCloud.download();
+        return "DOWNLOAD";
+    }  */
+
+    /**
+     * Método que efetua um upload
+     * @param in       Linha lida do BufferedReader
+     * @return         String
+
+    private String upload(String in) {
+        .....
+        sdCloud.upload();
+        return "UPLOAD";
+    }*/
+
+    /**
+     * Método que procura músicas consoante as etiquetas recebidas
+     * @param in       Linha lida do BufferedReader
+     * @return         String
+
+    private String search(String in) {
+    .....
+    sdCloud.search();
+    return "SEARCH";
+    }*/
 
 }

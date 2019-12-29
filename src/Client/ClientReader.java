@@ -60,6 +60,19 @@ public class ClientReader  implements Runnable
                 menu.setOpt(0);
                 menu.showMenu();
                 break;
+            case "UPLOAD":
+                //menu.setOpt(?);
+                //menu.showMenu();
+                break;
+            case "DOWNLOAD":
+                //menu.setOpt(?);
+                //menu.showMenu();
+            case "SEARCH":
+                //menu.setOpt(?);
+                //menu.showMenu();
+            default:
+                System.out.println(c);
+                menu.showMenu();
         }
     }
 }

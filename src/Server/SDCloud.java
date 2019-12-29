@@ -57,8 +57,18 @@ public class SDCloud
         return u;
     }
 
+    /**
+     * Método que efetua um download
+     * */
+    public void download(){}
 
+    /**
+     * Método que efetua um upload
+     * */
+    public void upload(){}
 
-
-
+    /**
+     * Método que efetua uma pesquisa através das etiquetas passadas como parametro
+     * */
+    public void search(){}
 }
