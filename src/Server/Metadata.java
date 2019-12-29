@@ -84,7 +84,7 @@ public class Metadata
 
     /**
      * Método que atualiza a lista de etiquetas da música
-     * @param a           Nova lista de etiquetas da música
+     * @param t           Nova lista de etiquetas da música
      */
     public void setTags(ArrayList<String> t) {this.tags = t;}
 

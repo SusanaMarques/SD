@@ -48,28 +48,28 @@ public class ClientReader  implements Runnable
     private synchronized void parsing(String c) {
         String[] p = c.split(" ", 2);
         switch (p[0].toUpperCase()) {
-            case "AUTENTICADO":
+            case "AUTENTICATED":
                 menu.setOpt(1);
                 menu.showMenu();
                 break;
-            case "REGISTADO":
+            case "REGISTER":
                 menu.setOpt(0);
                 menu.showMenu();
                 break;
-            case "SESSAOTERMINADA":
+            case "ENDSESSION":
                 menu.setOpt(0);
                 menu.showMenu();
                 break;
             case "UPLOAD":
-                //menu.setOpt(?);
-                //menu.showMenu();
+                menu.setOpt(1);
+                menu.showMenu();
                 break;
             case "DOWNLOAD":
-                //menu.setOpt(?);
-                //menu.showMenu();
+                menu.setOpt(1);
+                menu.showMenu();
             case "SEARCH":
-                //menu.setOpt(?);
-                //menu.showMenu();
+                menu.setOpt(1);
+                menu.showMenu();
             default:
                 System.out.println(c);
                 menu.showMenu();

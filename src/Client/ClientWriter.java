@@ -45,20 +45,26 @@ public class ClientWriter implements Runnable
     private void parsing(Integer op) throws IOException{
         switch (menu.getOpt()) {
             case 0:
-                if(op == 0) System.exit(0);
+                if (op == 0) System.exit(0);
                 if (op == 1) {login();}
                 if (op == 2) {registration(); }
                 break;
             case 1:
                 if(op == 0)
                     logout();
+                if(op == 1)
+                    upload();
+                if(op == 2)
+                    download();
+                if(op == 3)
+                    search();
                 break;
         }
     }
 
     /**
      * Método que lê os valores de modo a efetuar o login
-     * @throws                IOException
+     * @throws IOException
      */
     private void login() throws IOException{
         String username = menu.readString("Username: ");
@@ -81,12 +87,12 @@ public class ClientWriter implements Runnable
 
     /**
      * Método que lê os valores de modo a efetuar o registo de um utilizador
-     * @throws                IOException
+     * @throws IOException
      */
     private void registration() throws IOException{
         String username = menu.readString("Username: ");
         String password = menu.readString("Password: ");
-        String q = String.join(" ", "REGISTAR", username, password);
+        String q = String.join(" ", "REGISTER", username, password);
         out.write(q);
         out.newLine();
         out.flush();
@@ -105,16 +111,34 @@ public class ClientWriter implements Runnable
     }
 
     /**
-     * Método que indica ao servidor que o utilizador pretende fazer upload de um ficheiro
+     * Método que indica ao servidor que o utilizador pretende fazer upload de um ficheiro e os metadados do ficheiros
      * @throws IOException
      */
-    private void upload() throws IOException{ }
+    private void upload() throws IOException{
+        String path = menu.readString("Path:   \n");
+        System.out.println("> Inserir metadados     \n");
+        String y = menu.readString("Ano:       \n");
+        String t = menu.readString("Título:    \n");
+        String a = menu.readString("Artista:   \n");
+        System.out.println("> Inserir as etiquetas separadas por virgulas e sem espaços     \n");
+        String e = menu.readString("Etiquetas: \n");
+        String q = String.join(" ", "UPLOAD", path, y, t, a, e);
+        out.write(q);
+        out.newLine();
+        out.flush();
+    }
 
     /**
      * Método que indica ao servidor que o utilizador pretende procurar uma música
      * @throws IOException
      */
-    private void search() throws IOException{ }
+    private void search() throws IOException{
+        String tag = menu.readString("Tag: ");
+        String q = String.join(" ", "SEARCH", tag);
+        out.write(q);
+        out.newLine();
+        out.flush();
+    }
 
 
 }

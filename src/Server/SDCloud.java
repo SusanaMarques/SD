@@ -63,18 +63,22 @@ public class SDCloud
      * Método que efetua um download
      * */
     public void download(int id) throws Exceptions.MusicDoesntExistException {
-        if(library.containsKey(id))
-        {
-            Music m = library.get(id);
-            int nd = m.getnDownloads() + 1;
-            m.setnDownloads(nd);
-        }
     }
 
     /**
      * Método que efetua um upload
      * */
-    public void upload(){}
+    public void upload(String path, int year, String title, String artist, String tags){
+        //IR BUSCAR O FICHEIRO PELO PATH
+
+        String[] ts = tags.split(",");
+        ArrayList<String> t = new ArrayList<String>(Arrays.asList(ts));
+        Metadata data = new Metadata(year, title, artist, t);
+        // gerar um id novo para a musica
+        //Music m = new Music(id, path, data, 1);
+        //library.put(id,m);
+
+    }
 
     /**
      * Método que efetua uma pesquisa através das etiquetas passadas como parametro

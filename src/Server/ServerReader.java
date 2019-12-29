@@ -92,9 +92,9 @@ public class ServerReader implements Runnable
      */
     private String login(String in) throws InvalidRequestException {
         String[] p = in.split(" ");
-        if (p.length != 2) throw new InvalidRequestException("Dados errados!");
+        if (p.length != 2) throw new InvalidRequestException("Credenciais Erradas!");
         this.user = sdCloud.login(p[0], p[1],msg);
-        return "AUTENTICADO";
+        return "AUTENTICATED";
     }
 
     /**
@@ -104,7 +104,7 @@ public class ServerReader implements Runnable
      */
     private String logout() {
         this.user = null;
-        return "SESSAOTERMINADA";
+        return "ENDSESSION";
     }
 
     /**
@@ -116,9 +116,9 @@ public class ServerReader implements Runnable
      */
     private String registration(String in) throws InvalidRequestException, UserExistsException {
         String[] p = in.split(" ");
-        if (p.length != 2) throw new InvalidRequestException("Dados errados!");
+        if (p.length != 2) throw new InvalidRequestException("Credenciais Erradas!");
         sdCloud.registration(p[0], p[1]);
-        return "REGISTADO";
+        return "REGISTER";
     }
 
     /**
@@ -149,12 +149,13 @@ public class ServerReader implements Runnable
      * Método que efetua um upload
      * @param in       Linha lida do BufferedReader
      * @return         String
-
+     */
     private String upload(String in) {
-        .....
-        sdCloud.upload();
+        String[] p = in.split(" ");
+        if (p.length < 6) //maybe mandar exception tem de receber os metadados todos e pelo menos 1 etiqueta
+            sdCloud.upload(p[1], Integer.parseInt(p[2]), p[3], p[4], p[5]);
         return "UPLOAD";
-    }*/
+    }
 
     /**
      * Método que procura músicas consoante as etiquetas recebidas
