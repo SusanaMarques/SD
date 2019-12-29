@@ -1,40 +1,64 @@
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 
-import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
+public class SDCloud
+{
+    /** Utilizadores da cloud **/
+    private Map<String,Server.User> users;
+    /** Lock do utilizador */
+    private Lock userLock;
 
 
-public class SDCloud implements SDCloudInterface, Serializable {
-    private Map<Integer,Music> library;
-    //TEST
-    private Map<Integer,String > users;
-    private int tst;
-
+    /**
+     * Construtor da classe SDCloud sem parâmetros
+     */
     public SDCloud(){
-        library = new HashMap<Integer,Music>();
-        users = new HashMap<>();
+        this.users = new HashMap<>();
+        this.userLock = new ReentrantLock();
     }
 
-    public SDCloud(String relativePath) {
+    /**
+     * Método que efetua o registo um utilizador
+     * @param email              Email do utilizador
+     * @param password           Password do utilizador
+     *
+     * @throws Exceptions.UserExistsException
+     */
+    public void registration(String email, String password) throws  Exceptions.UserExistsException{
+        userLock.lock();
         try {
-            ObjectInputStream ooj = new ObjectInputStream(new FileInputStream(relativePath+"lib.txt"));
-            this.library = (Map<Integer, Music>) ooj.readObject();
-            ooj.close();
-            ooj = new ObjectInputStream(new FileInputStream(relativePath+"usr.txt"));
-            this.users = (Map<Integer, User>) ooj.readObject();
-            ooj.close();
+            if (users.containsKey(email))
+                throw new Exceptions.UserExistsException("O utilizador já existe");
+            else
+                users.put(email, new  Server.User(email, password));
+        } finally { userLock.unlock(); }
+    }
 
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+    /**
+     * Método que efetua o inicio de sessão
+     * @param email         Email inserido
+     * @param password      Password inserida
+     * @param msg           Buffer de mensagens
+     * @return              Utilizador autenticado
+     * @throws              Exceptions.InvalidRequestException
+     */
+    public Server.User iniciarSessao(String email, String password, Server.MsgBuffer msg) throws Exceptions.InvalidRequestException{
+        Server.User u;
+        userLock.lock();
+        try {
+            u = users.get(email);
+            if (u == null || !u.verifyPassword(password)) throw new Exceptions.InvalidRequestException("Dados incorretos");
+            else u.setNotificacoes(msg);
+        } finally { userLock.unlock(); }
+        return u;
     }
 
 
-    public SDCloud(SDCloud sd) {
-        this.library = sd.getLib();
-        this.users = sd.getUsers();
-    }
 
 
 
