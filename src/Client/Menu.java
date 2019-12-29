@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Menu
 {
-    /** opção atual do menu **/
+    /** Opção atual do menu **/
     private int opt;
     /** Scanner **/
     private Scanner in;
@@ -20,13 +20,13 @@ public class Menu
 
     /**
      * Método que evolve o valor da opção.
-     * @return       opção
+     * @return       Opção
      */
     public int getOpt(){ return this.opt; }
 
     /**
      * Método que altera o valor da opção
-     * @param n         novo valor da opção
+     * @param n         Novo valor da opção
      */
     public void setOpt(int n){ this.opt = n; }
 
@@ -54,7 +54,7 @@ public class Menu
 
     /**
      * Método que lê a opção selecionada do menu.
-     *@return opção
+     *@return            Opção
      */
     public int readOption()
     {
@@ -65,7 +65,7 @@ public class Menu
 
     /**
      * Método que lê uma mensagem
-     * @return        mensagem lida
+     * @return        Mensagem lida
      */
     public String readString(String m)
     {
@@ -75,7 +75,7 @@ public class Menu
 
     /**
      * Método que devolve a opção inserida, verificando se esta é valida.
-     * @return      op
+     * @return      Opção
      */
     public int option() {
         int op = readOption();

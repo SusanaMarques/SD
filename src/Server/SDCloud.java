@@ -11,6 +11,8 @@ public class SDCloud
     private Map<String, User> users;
     /** Lock do utilizador */
     private Lock userLock;
+    /** Musicas da cloud **/
+    private Map<Integer, Music> library;
 
 
     /**
@@ -60,7 +62,14 @@ public class SDCloud
     /**
      * Método que efetua um download
      * */
-    public void download(){}
+    public void download(int id) throws Exceptions.MusicDoesntExistException {
+        if(library.containsKey(id))
+        {
+            Music m = library.get(id);
+            int nd = m.getnDownloads() + 1;
+            m.setnDownloads(nd);
+        }
+    }
 
     /**
      * Método que efetua um upload
