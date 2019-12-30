@@ -2,12 +2,11 @@ package Server;
 
 
 import Exceptions.InvalidRequestException;
+import Exceptions.InvalidTagsException;
 import Exceptions.UserExistsException;
-
 import java.net.Socket;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
 import java.io.IOException;
 
 public class ServerReader implements Runnable
@@ -43,7 +42,7 @@ public class ServerReader implements Runnable
         String r;
         while ((r = readLine()) != null) {
             try { msg.write(parsing(r)); } catch (IndexOutOfBoundsException e) { msg.write("WRONG"); }
-            catch (InvalidRequestException | UserExistsException  | InterruptedException e) { msg.write(e.getMessage()); }
+            catch (InvalidRequestException | InvalidTagsException | UserExistsException  | InterruptedException e) { msg.write(e.getMessage()); }
         }
         // endConnection();
         if (this.user == null) {
@@ -73,7 +72,7 @@ public class ServerReader implements Runnable
      * @throws Exceptions.UserExistsException
      * @throws InterruptedException
      */
-    private String parsing(String r) throws UserExistsException, InterruptedException, InvalidRequestException {
+    private String parsing(String r) throws UserExistsException, InterruptedException, InvalidRequestException, InvalidTagsException {
         String[] p = r.split(" ", 2);
         switch (p[0].toUpperCase()) {
             case "LOGIN":
@@ -90,9 +89,9 @@ public class ServerReader implements Runnable
             case "UPLOAD":
                 //return this.upload(p[1]);
             case "SEARCH":
-                //return this.search(p[1]);
+                return this.search(p[1]);
             default:
-                return "ERRO";
+                return "ERRO!";
         }
     }
 
@@ -130,7 +129,7 @@ public class ServerReader implements Runnable
         System.out.print("3");
         String[] p = in.split(" ");
         System.out.print("4");
-        if (p.length != 2) throw new InvalidRequestException("Credenciais Erradas! registo");
+        if (p.length != 2) throw new InvalidRequestException("Credenciais Erradas!");
         System.out.print("1");
         sdCloud.registration(p[0], p[1]);
         System.out.print("2");

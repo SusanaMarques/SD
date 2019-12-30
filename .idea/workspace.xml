@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e40b8cc1-79ba-4663-be18-57a99b27d742" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/ClientWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/ClientWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Server/SDCloud.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Server/SDCloud.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Server/ServerReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Server/ServerReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/ClientWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/Metadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Metadata.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/SDCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/SDCloud.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ServerReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerReader.java" afterDir="false" />
     </list>
@@ -147,7 +149,9 @@
       <workItem from="1577615240841" duration="11893000" />
       <workItem from="1577635016032" duration="4282000" />
       <workItem from="1577641110850" duration="1221000" />
-      <workItem from="1577652620845" duration="8122000" />
+      <workItem from="1577652620845" duration="8512000" />
+      <workItem from="1577736203106" duration="1502000" />
+      <workItem from="1577739483130" duration="1637000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1576581496200</created>
@@ -269,31 +273,31 @@
     </state>
     <state x="301" y="55" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1577725033919" />
     <state x="354" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1576600822387" />
-    <state width="1398" height="170" key="GridCell.Tab.0.bottom" timestamp="1577735167753">
+    <state width="1398" height="191" key="GridCell.Tab.0.bottom" timestamp="1577741360972">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="170" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1577735167753" />
-    <state width="1398" height="170" key="GridCell.Tab.0.center" timestamp="1577735167751">
+    <state width="1398" height="191" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1577741360972" />
+    <state width="1398" height="191" key="GridCell.Tab.0.center" timestamp="1577741360969">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="170" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1577735167751" />
-    <state width="1398" height="170" key="GridCell.Tab.0.left" timestamp="1577735167751">
+    <state width="1398" height="191" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1577741360969" />
+    <state width="1398" height="191" key="GridCell.Tab.0.left" timestamp="1577741360968">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="170" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1577735167750" />
-    <state width="1398" height="170" key="GridCell.Tab.0.right" timestamp="1577735167752">
+    <state width="1398" height="191" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1577741360968" />
+    <state width="1398" height="191" key="GridCell.Tab.0.right" timestamp="1577741360971">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="170" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1577735167752" />
+    <state width="1398" height="191" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1577741360971" />
     <state x="320" y="191" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1577725037328">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="191" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1577725037328" />
     <state x="356" y="184" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1576600825060" />
-    <state x="374" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1577652651956">
+    <state x="374" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1577736203373">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="374" y="281" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1577652651956" />
+    <state x="374" y="281" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1577736203373" />
     <state x="503" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576581434773">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -302,10 +306,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="375" y="219" width="689" height="462" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1577622448358" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1576583192031">
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1577738610637">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1576583192031" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1577738610637" />
   </component>
   <component name="masterDetails">
     <states>

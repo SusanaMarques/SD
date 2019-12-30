@@ -1,5 +1,7 @@
 package Server;
 
+import Exceptions.InvalidTagsException;
+
 import java.util.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -11,8 +13,10 @@ public class SDCloud
     private Map<String, User> users;
     /** Lock do utilizador */
     private Lock userLock;
-    /** Musicas da cloud  **/
+    /** Biblioteca de musicas da cloud  **/
     private Map<Integer, Music> library;
+    /** Lock da biblioteca de músicas da cloud */
+    private Lock libraryLock;
 
 
     /**
@@ -33,14 +37,10 @@ public class SDCloud
     public void registration(String username, String password) throws  Exceptions.UserExistsException{
         userLock.lock();
         try {
-            System.out.println("1");
             if (users.containsKey(username))
                 throw new Exceptions.UserExistsException("O utilizador já existe");
             else
-                System.out.println("2");
-                User u = new User(username,password);
-                users.put(username, u);
-                System.out.println("3");
+                users.put(username, new User(username,password));
         } finally { userLock.unlock(); }
     }
 
@@ -85,9 +85,22 @@ public class SDCloud
     }
 
     /**
-     * Método que efetua uma pesquisa através das etiquetas passadas como parametro
+     * Método que efetua uma pesquisa através das etiquetas passadas como parametro UNFINISHED
      * */
-    public void search(String tag){
-        
+    public void search(String tag) throws InvalidTagsException {
+        libraryLock.lock();
+        try
+        {
+            ArrayList<Music> l = (ArrayList<Music>) this.library.values();
+            ArrayList<Music> c = new ArrayList<>();
+            for(Music m : l)
+            {
+                Metadata data = m.getMetadata();
+                ArrayList<String> tags = data.getTags();
+                if(tags.contains(tag))
+                    c.add(m);
+            }
+        } finally { libraryLock.unlock(); }
+
     }
 }

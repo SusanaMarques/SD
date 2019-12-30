@@ -90,7 +90,7 @@ public class Metadata
 
 
     /**
-     * Função equals da classe Server.Metadata
+     * Função equals da classe Metadata
      * @param o           Objecto
      * @return            Boolean
      */
