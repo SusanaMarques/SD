@@ -54,7 +54,6 @@ public class ServerReader implements Runnable
             } catch (IOException e) { e.printStackTrace(); }
         }
 
-
     }
 
     /**
@@ -178,11 +177,13 @@ public class ServerReader implements Runnable
      * Método que procura músicas consoante as etiquetas recebidas
      * @param in       Linha lida do BufferedReader
      * @return         String
-
-    private String search(String in) {
-    .....
-    sdCloud.search();
-    return "SEARCH";
-    }*/
+     */
+    private String search(String in) throws Exceptions.InvalidTagsException {
+        String[] p = in.split(" ");
+        if (p.length > 1)
+             throw new Exceptions.InvalidTagsException("Etiqueta Inválida");
+        sdCloud.search(p[0]);
+        return "SEARCH";
+    }
 
 }

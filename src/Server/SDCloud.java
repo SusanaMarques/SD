@@ -87,5 +87,7 @@ public class SDCloud
     /**
      * Método que efetua uma pesquisa através das etiquetas passadas como parametro
      * */
-    public void search(){}
+    public void search(String tag){
+        
+    }
 }

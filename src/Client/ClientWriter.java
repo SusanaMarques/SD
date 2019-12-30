@@ -32,8 +32,13 @@ public class ClientWriter implements Runnable
     public void run() {
         int op;
         menu.showMenu();
-        op = menu.op();
-        try { parsing(op); } catch (IOException e) { e.printStackTrace(); }
+        try {
+            while ((op = menu.op()) != -1) {
+                parsing(op);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -127,11 +132,11 @@ public class ClientWriter implements Runnable
     }
 
     /**
-     * Método que indica ao servidor que o utilizador pretende procurar uma música
+     * Método que indica ao servidor que o utilizador pretende procurar uma música com determinado tag
      * @throws IOException
      */
     private void search() throws IOException{
-        String tag = menu.readString("Tag: ");
+        String tag = menu.readString("Etiqueta a pesquisar: ");
         String q = String.join(" ", "SEARCH", tag);
         out.write(q);
         out.newLine();
