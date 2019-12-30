@@ -26,15 +26,14 @@ public class ClientWriter implements Runnable
     }
 
     /**
-     * Método que executa a thread ClienteWriter
+     * Método que executa a thread ClientWriter
      */
     @Override
     public void run() {
         int op;
-        menu.showMenu();
-        try {
-            while ((op = menu.getOpt()) != -1)
-                parsing(op);
+        menu.exec();
+        op = menu.getOpt();
+        try { parsing(op);
         } catch (IOException e) { e.printStackTrace(); }
     }
 

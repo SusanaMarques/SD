@@ -70,7 +70,7 @@ public class ServerReader implements Runnable
             case "LOGOUT":
                 autentication(true);
                 return this.logout();
-            case "REGISTAR":
+            case "REGISTER":
                 autentication(false);
                 return this.registration(p[1]);
             case "DOWNLOAD":
@@ -130,7 +130,7 @@ public class ServerReader implements Runnable
         if (status && user == null)
             throw new InvalidRequestException("Acesso negado");
         if (!status && user != null)
-            throw new InvalidRequestException("Já existe um utilizador autentidaco");
+            throw new InvalidRequestException("Já existe um utilizador autenticado");
     }
 
     /**

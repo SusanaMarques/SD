@@ -1,6 +1,7 @@
 package Client;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Menu
 {
@@ -30,6 +31,14 @@ public class Menu
      */
     public void setOpt(int n){ this.opt = n; }
 
+    public void exec()
+    {
+        do{
+            showMenu();
+            this.opt = readOption();
+        } while (this.opt == -1);
+    }
+
     /**
      * Método que apresenta o menu
      */
@@ -58,9 +67,19 @@ public class Menu
      */
     public int readOption()
     {
-        int n;
-        try { n = Integer.parseInt(in.nextLine()); } catch (NumberFormatException e) { System.out.println("\n Valor inválido\n");n = -1; }
-        return n;
+        int op;
+        Scanner input = new Scanner(System.in);
+        System.out.println("\nOpção: \n");
+
+        try {op = input.nextInt();}
+        catch (InputMismatchException e) {op = -1;} //Não foi escrito um int
+        if (op<0 || op >2)
+        {
+            System.out.println("\nOpção Inválida!");
+            op = -1;
+        }
+
+        return op;
     }
 
     /**
@@ -72,20 +91,4 @@ public class Menu
         System.out.println(m);
         return in.nextLine();
     }
-
-    /**
-     * Método que devolve a opção inserida, verificando se esta é valida.
-     * @return      Opção
-     */
-    public int option() {
-        int op = readOption();
-        if (this.opt == 0) {
-            while (op < 0 || op > 2) {
-                System.out.println("> Escolha uma opção: ");
-                op = readOption();
-            }
-        }
-        return op;
-    }
-
 }
