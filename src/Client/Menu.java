@@ -31,13 +31,6 @@ public class Menu
      */
     public void setOpt(int n){ this.opt = n; }
 
-    public void exec()
-    {
-        do{
-            showMenu();
-            this.opt = readOption();
-        } while (this.opt == -1);
-    }
 
     /**
      * Método que apresenta o menu
@@ -67,19 +60,14 @@ public class Menu
      */
     public int readOption()
     {
-        int op;
-        Scanner input = new Scanner(System.in);
-        System.out.println("\nOpção: \n");
+        int n;
 
-        try {op = input.nextInt();}
-        catch (InputMismatchException e) {op = -1;} //Não foi escrito um int
-        if (op<0 || op >2)
-        {
-            System.out.println("\nOpção Inválida!");
-            op = -1;
+        try { n = Integer.parseInt(in.nextLine()); } catch (NumberFormatException e) {
+            System.out.println("\n>Valor inválido\n");
+            n = -1;
         }
 
-        return op;
+        return n;
     }
 
     /**
@@ -90,5 +78,17 @@ public class Menu
     {
         System.out.println(m);
         return in.nextLine();
+    }
+
+    public Integer op() {
+        System.out.println("Opção: ");
+        int opcao = readOption();
+        if (opt == 0) {
+            while (opcao < 0 || opcao > 2) {
+                System.out.println("Opção: ");
+                opcao = readOption();
+            }
+        }
+        return opcao;
     }
 }

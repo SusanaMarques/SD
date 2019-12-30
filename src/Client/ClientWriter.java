@@ -31,10 +31,9 @@ public class ClientWriter implements Runnable
     @Override
     public void run() {
         int op;
-        menu.exec();
-        op = menu.getOpt();
-        try { parsing(op);
-        } catch (IOException e) { e.printStackTrace(); }
+        menu.showMenu();
+        op = menu.op();
+        try { parsing(op); } catch (IOException e) { e.printStackTrace(); }
     }
 
     /**

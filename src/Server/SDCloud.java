@@ -11,7 +11,7 @@ public class SDCloud
     private Map<String, User> users;
     /** Lock do utilizador */
     private Lock userLock;
-    /** Musicas da cloud **/
+    /** Musicas da cloud  **/
     private Map<Integer, Music> library;
 
 
@@ -33,10 +33,14 @@ public class SDCloud
     public void registration(String username, String password) throws  Exceptions.UserExistsException{
         userLock.lock();
         try {
+            System.out.println("1");
             if (users.containsKey(username))
                 throw new Exceptions.UserExistsException("O utilizador já existe");
             else
-                users.put(username, new User(username, password));
+                System.out.println("2");
+                User u = new User(username,password);
+                users.put(username, u);
+                System.out.println("3");
         } finally { userLock.unlock(); }
     }
 
@@ -53,7 +57,7 @@ public class SDCloud
         userLock.lock();
         try {
             u = users.get(username);
-            if (u == null || !u.verifyPassword(password)) throw new Exceptions.InvalidRequestException("Dados incorretos");
+            if (u == null || !u.verifyPassword(password)) throw new Exceptions.InvalidRequestException("Credenciais de Login Inválidas!");
             else u.setNotificacoes(msg);
         } finally { userLock.unlock(); }
         return u;

@@ -40,6 +40,19 @@ public class ServerReader implements Runnable
 
     @Override
     public void run() {
+        String r;
+        while ((r = readLine()) != null) {
+            try { msg.write(parsing(r)); } catch (IndexOutOfBoundsException e) { msg.write("WRONG"); }
+            catch (InvalidRequestException | UserExistsException  | InterruptedException e) { msg.write(e.getMessage()); }
+        }
+        // endConnection();
+        if (this.user == null) {
+            try {
+                socket.shutdownInput();
+                socket.shutdownOutput();
+                socket.close();
+            } catch (IOException e) { e.printStackTrace(); }
+        }
 
 
     }
@@ -61,7 +74,7 @@ public class ServerReader implements Runnable
      * @throws Exceptions.UserExistsException
      * @throws InterruptedException
      */
-    private String parse(String r) throws UserExistsException, InterruptedException, InvalidRequestException {
+    private String parsing(String r) throws UserExistsException, InterruptedException, InvalidRequestException {
         String[] p = r.split(" ", 2);
         switch (p[0].toUpperCase()) {
             case "LOGIN":
@@ -116,8 +129,8 @@ public class ServerReader implements Runnable
      */
     private String registration(String in) throws InvalidRequestException, UserExistsException {
         String[] p = in.split(" ");
-        if (p.length != 2) throw new InvalidRequestException("Credenciais Erradas!");
-        sdCloud.registration(p[0], p[1]);
+        if (p.length != 3) throw new InvalidRequestException("Credenciais Erradas! registo");
+        sdCloud.registration(p[1], p[2]);
         return "REGISTER";
     }
 

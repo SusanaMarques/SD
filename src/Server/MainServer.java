@@ -13,12 +13,12 @@ public class MainServer {
         while (true) {
             MsgBuffer msg = new MsgBuffer();
             Socket socket = s.accept();
-            //ServerReader sr =
-            //ServerWriter sw =
-            //Thread tw = new Thread(sw);
-            //Thread tr = new Thread(sr);
-            //tw.start();
-            //tr.start();
+            ServerReader sr =  new ServerReader(socket,sdCloud,msg);
+            ServerWriter sw = new ServerWriter(msg,socket);
+            Thread tw = new Thread(sw);
+            Thread tr = new Thread(sr);
+            tw.start();
+            tr.start();
         }
     }
 }
