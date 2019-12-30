@@ -128,9 +128,13 @@ public class ServerReader implements Runnable
      * @throws        Exceptions.UserExistsException
      */
     private String registration(String in) throws InvalidRequestException, UserExistsException {
+        System.out.print("3");
         String[] p = in.split(" ");
+        System.out.print("4");
         if (p.length != 2) throw new InvalidRequestException("Credenciais Erradas! registo");
+        System.out.print("1");
         sdCloud.registration(p[0], p[1]);
+        System.out.print("2");
         return "REGISTER";
     }
 
@@ -166,7 +170,7 @@ public class ServerReader implements Runnable
     private String upload(String in) {
         String[] p = in.split(" ");
         if (p.length < 6) //maybe mandar exception tem de receber os metadados todos e pelo menos 1 etiqueta
-            sdCloud.upload(p[1], Integer.parseInt(p[2]), p[3], p[4], p[5]);
+            sdCloud.upload(p[0], Integer.parseInt(p[1]), p[2], p[3], p[4]);
         return "UPLOAD";
     }
 
