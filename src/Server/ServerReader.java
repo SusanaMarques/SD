@@ -129,8 +129,8 @@ public class ServerReader implements Runnable
      */
     private String registration(String in) throws InvalidRequestException, UserExistsException {
         String[] p = in.split(" ");
-        if (p.length != 3) throw new InvalidRequestException("Credenciais Erradas! registo");
-        sdCloud.registration(p[1], p[2]);
+        if (p.length != 2) throw new InvalidRequestException("Credenciais Erradas! registo");
+        sdCloud.registration(p[0], p[1]);
         return "REGISTER";
     }
 
