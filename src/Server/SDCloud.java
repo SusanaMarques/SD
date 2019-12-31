@@ -29,6 +29,7 @@ public class SDCloud
         this.users = new HashMap<>();
         this.userLock = new ReentrantLock();
         this.library= new HashMap<>();
+        this.libraryLock= new ReentrantLock();
     }
 
     /**
@@ -117,20 +118,19 @@ public class SDCloud
     /**
      * Método que mostra as músicas disponiveis na biblioteca da cloud
      * */
-    public void showLibrary() throws Exceptions.EmptyLibraryException
-    {
+    public String showLibrary() throws Exceptions.EmptyLibraryException {
         libraryLock.lock();
-        System.out.println("here");
-        if(library.size() < 1)
-            throw new  Exceptions.EmptyLibraryException("Biblioteca Vazia!");
-        try
-        {
-            for(Map.Entry<Integer,Music> e : library.entrySet())
-            {
+        StringBuilder ret= new StringBuilder().append("LIBRARY ").append( " Id Title " );
+        if (library.size() < 1)
+            throw new Exceptions.EmptyLibraryException("Biblioteca Vazia!");
+        try {
+            for (Map.Entry<Integer, Music> e : library.entrySet()) {
                 String title = e.getValue().getMetadata().getTitle();
-                System.out.print("Id: " + e.getKey() + " " + "Titulo: " + title);
+                ret.append(e.getKey() + " " +  title);
             }
-        } finally { libraryLock.unlock(); }
-
+        } finally {
+            libraryLock.unlock();
+        }
+    return ret.append("\n").toString();
     }
 }

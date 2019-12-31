@@ -196,7 +196,8 @@ public class ServerReader implements Runnable
     private String upload(String payload) throws IOException {
         String[] s = payload.split(" ",5);
         String title = (s[1].isEmpty() ? "" + new Random().nextInt() : s[1]);
-        int ano = Integer.parseInt(s[0]);
+        int ano=0;
+        try{ano = Integer.parseInt(s[0]);} catch (Exception e){}
         String artist = s[2];
         String tags = s[3];
         int id = sdCloud.upload(ano,title,artist,tags);
@@ -233,8 +234,8 @@ public class ServerReader implements Runnable
      * @return         String
      */
     private String showLibrary() throws EmptyLibraryException {
-        sdCloud.showLibrary();
-        return "LIBRARY";
+        return sdCloud.showLibrary();
+
     }
 
 }

@@ -75,11 +75,20 @@ public class ClientReader  implements Runnable
                 menu.showMenu();
             case "LIBRARY":
                 menu.setOpt(1);
+                showLib(p[1]);
                 menu.showMenu();
             default:
                 System.out.println(c);
                 menu.showMenu();
         }
+    }
+
+    private void showLib(String p) {
+        String[] s = p.split(" ");
+        for(int i =0;i<s.length;i+=2){
+            System.out.println(s[i]+" "+ s[i+1]+"\n");
+        }
+
     }
 
     private void download(String p) throws IOException {
