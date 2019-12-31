@@ -31,7 +31,7 @@ public class Metadata
      * @param artist     Nome do artista da música
      * @param tags       Lista de etiquetas da música
      */
-    public Metadata(int year, String title, String artist, ArrayList tags)
+    public Metadata(int year, String title, String artist, ArrayList<String> tags)
     {
         this.year = year;
         this.title = title;
@@ -61,7 +61,7 @@ public class Metadata
      * Método que devolve a lista de etiquetas da musica
      * @return           Lista de etiquetas da musica
      */
-    public ArrayList getTags(){return this.tags;}
+    public ArrayList<String> getTags(){return this.tags;}
 
 
     /**

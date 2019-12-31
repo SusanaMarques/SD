@@ -144,7 +144,7 @@ public class ClientWriter implements Runnable
     /** Método de codificação do ficheiro para transmitir
      * @param path Path do ficheiro a enviar
     **/
-    private String packager(String path) throws IOException {
+    public static String packager(String path) throws IOException {
         File f=new File(path);
         byte[] ba=Files.toByteArray(f);
         String ret = Base64.encodeBase64String(ba);

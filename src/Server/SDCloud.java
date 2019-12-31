@@ -1,8 +1,10 @@
 package Server;
 
+import Client.ClientWriter;
 import Exceptions.InvalidTagsException;
 import Exceptions.MusicDoesntExistException;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -26,6 +28,7 @@ public class SDCloud
     public SDCloud(){
         this.users = new HashMap<>();
         this.userLock = new ReentrantLock();
+        this.library= new HashMap<>();
     }
 
     /**
@@ -67,16 +70,24 @@ public class SDCloud
     /**
      * Método que efetua um download
      * */
-    public void download(int id) throws Exceptions.MusicDoesntExistException {
+    public Music download(int id) throws Exceptions.MusicDoesntExistException, IOException {
+        Music m = library.get(id);
+        m.setnDownloads( m.getnDownloads()+1 );
+        library.put(id,m);
+        return m;
     }
 
     /**
      * Método que efetua um upload
      * */
-    public void upload(int year, String title, String artist, String tags){
+    public int upload(int year, String title, String artist, String tags){
         String[] ts = tags.split(",");
         ArrayList<String> t = new ArrayList<String>(Arrays.asList(ts));
         Metadata data = new Metadata(year, title, artist, t);
+        Music musica =  new Music(data,0);
+        int id = musica.getID();
+        library.put(id, musica);
+        return id;
         // gerar um id novo para a musica
         //Music m = new Music(id, path, data, 1);
         //library.put(id,m);

@@ -1,5 +1,7 @@
 package Client;
 
+import Server.ServerReader;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -45,7 +47,7 @@ public class ClientReader  implements Runnable
      * Método que faz o parse do comando recebido
      * @param c Comando recebido
      */
-    private synchronized void parsing(String c) {
+    private synchronized void parsing(String c) throws IOException {
         String[] p = c.split(" ", 2);
         switch (p[0].toUpperCase()) {
             case "AUTENTICATED":
@@ -66,6 +68,7 @@ public class ClientReader  implements Runnable
                 break;
             case "DOWNLOAD":
                 menu.setOpt(1);
+                download(p[1]);
                 menu.showMenu();
             case "SEARCH":
                 menu.setOpt(1);
@@ -77,6 +80,12 @@ public class ClientReader  implements Runnable
                 System.out.println(c);
                 menu.showMenu();
         }
+    }
+
+    private void download(String p) throws IOException {
+        String[] s=p.split(" ",5);
+        String path = "downloads/"+s[1]+".mp3";
+        ServerReader.unpackager(path,s[4]);
     }
 }
 

@@ -1,9 +1,12 @@
 package Server;
 
 
+import Client.ClientWriter;
 import Exceptions.*;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.cxf.endpoint.Server;
+
 import java.io.*;
 import java.net.Socket;
 import java.io.BufferedReader;
@@ -166,15 +169,28 @@ public class ServerReader implements Runnable
      * @param in       Linha lida do BufferedReader
      * @return         String
      */
-    private String download(String in) throws MusicDoesntExistException {
+    private String download(String in) throws MusicDoesntExistException, IOException {
         int id = Integer.parseInt(in);
-        sdCloud.download(id);
-        return "DOWNLOAD";
+        Music m = sdCloud.download(id);
+        Metadata meta = m.getMetadata();
+        String path = "Biblioteca/" +id+".mp3";
+        String b64 = ClientWriter.packager(path);
+        StringBuilder send = new StringBuilder();
+        send.append("DOWNLOAD ").append(meta.getYear()).append(" ").append(meta.getTitle())
+                .append(" ").append(meta.getArtist()).append(" ");
+
+        for(String tag: meta.getTags())
+            send.append(tag+",");
+
+        send.append(" "+b64+"\n");
+
+
+        return send.toString();
     }
 
     /**
      * Método que efetua um upload
-     * @param in       Linha lida do BufferedReader
+     * @param payload       Linha lida do BufferedReader
      * @return         String
      */
     private String upload(String payload) throws IOException {
@@ -183,17 +199,18 @@ public class ServerReader implements Runnable
         int ano = Integer.parseInt(s[0]);
         String artist = s[2];
         String tags = s[3];
-        sdCloud.upload(ano,title,artist,tags);
-        unpackager(title,s[4]);
+        int id = sdCloud.upload(ano,title,artist,tags);
+        String path = "Biblioteca/"+id+".mp3";
+        unpackager(path,s[4]);
 
         return "UPLOAD";
     }
 
 
-    private void unpackager(String filename, String data64) throws IOException {
+    public static void unpackager(String path, String data64) throws IOException {
         byte[] ba = Base64.decodeBase64(data64);
-        String path = "Biblioteca/"+filename;
         Path pt = Paths.get(path);
+        System.out.println("SERver reader unpackagerPt: "+pt.toString());
         Files.createDirectories(pt.getParent());
         Files.write(pt, ba, StandardOpenOption.WRITE,StandardOpenOption.CREATE,StandardOpenOption.CREATE_NEW);
     }
