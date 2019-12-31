@@ -14,7 +14,7 @@ public class MainServer {
             MsgBuffer msg = new MsgBuffer();
             Socket socket = s.accept();
             ServerReader sr =  new ServerReader(socket,sdCloud,msg);
-            ServerWriter sw = new ServerWriter(msg,socket);
+            ServerWriter sw = new ServerWriter(msg,socket,sdCloud);
             Thread tw = new Thread(sw);
             Thread tr = new Thread(sr);
             tw.start();

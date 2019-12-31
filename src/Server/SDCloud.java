@@ -6,12 +6,14 @@ import Exceptions.MusicDoesntExistException;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 
 public class SDCloud
 {
+    private static final int MAXDOWN = 2 ;
     /** Utilizadores da cloud **/
     private Map<String, User> users;
     /** Lock do utilizador */
@@ -20,6 +22,14 @@ public class SDCloud
     private Map<Integer, Music> library;
     /** Lock da biblioteca de músicas da cloud */
     private Lock libraryLock;
+
+    private Lock sdCloudlock = new ReentrantLock();
+
+    private int downloading=0;
+    private Lock downlock = new ReentrantLock();
+    private Condition cd = downlock.newCondition();
+
+
 
 
     /**
@@ -72,9 +82,15 @@ public class SDCloud
      * Método que efetua um download
      * */
     public Music download(int id) throws Exceptions.MusicDoesntExistException, IOException {
-        Music m = library.get(id);
-        m.setnDownloads( m.getnDownloads()+1 );
-        library.put(id,m);
+        libraryLock.lock();
+        Music m;
+        try{
+            m = library.get(id);
+            m.setnDownloads( m.getnDownloads()+1 );
+            library.put(id,m);
+        }
+        finally {libraryLock.unlock(); }
+
         return m;
     }
 
@@ -86,9 +102,12 @@ public class SDCloud
         ArrayList<String> t = new ArrayList<String>(Arrays.asList(ts));
         Metadata data = new Metadata(year, title, artist, t);
         Music musica =  new Music(data,0);
+        libraryLock.lock();
         int id = musica.getID();
         library.put(id, musica);
+        libraryLock.unlock();
         return id;
+
         // gerar um id novo para a musica
         //Music m = new Music(id, path, data, 1);
         //library.put(id,m);
@@ -102,7 +121,7 @@ public class SDCloud
         libraryLock.lock();
         try
         {
-            ArrayList<Music> l = (ArrayList<Music>) this.library.values();
+            Collection<Music> l = this.library.values();
             ArrayList<Music> c = new ArrayList<>();
             for(Music m : l)
             {
@@ -132,5 +151,30 @@ public class SDCloud
             libraryLock.unlock();
         }
     return ret.append("\n").toString();
+    }
+    public void lock(){
+        sdCloudlock.lock();
+    }
+    public void unlock(){
+        sdCloudlock.unlock();
+    }
+
+    public void startingDownload() {
+        downlock.lock();
+        try {
+        while (downloading >= MAXDOWN) {
+            cd.await();
+        }
+            downloading++;
+        } catch (InterruptedException e) { e.printStackTrace();}
+        finally {downlock.unlock(); }
+
+    }
+
+    public void finishedDownloading() {
+        downlock.lock();
+        downloading--;
+        cd.signal();
+        downlock.unlock();
     }
 }

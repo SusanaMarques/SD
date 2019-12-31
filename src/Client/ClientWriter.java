@@ -117,6 +117,8 @@ public class ClientWriter implements Runnable
     private void download() throws IOException{
         String id = menu.readString("Id: ");
         String q = String.join(" ", "DOWNLOAD", id);
+
+        System.out.println("@clientwriter download");
         out.write(q);
         out.newLine();
         out.flush();
@@ -142,7 +144,7 @@ public class ClientWriter implements Runnable
     }
 
     /** Método de codificação do ficheiro para transmitir
-     * @param path Path do ficheiro a enviar
+     * @param path Path do fString artist = s[2];icheiro a enviar
     **/
     public static String packager(String path) throws IOException {
         File f=new File(path);

@@ -101,6 +101,7 @@ public class ServerReader implements Runnable
                 autentication(false);
                 return this.registration(p[1]);
             case "DOWNLOAD":
+                System.out.println("parsing server reader");
                 return this.download(p[1]);
             case "UPLOAD":
                 return this.upload(p[1]);
@@ -171,21 +172,26 @@ public class ServerReader implements Runnable
      */
     private String download(String in) throws MusicDoesntExistException, IOException {
         int id = Integer.parseInt(in);
+        System.out.println("@serverwriter download sd locking");
+        sdCloud.lock();
+        System.out.println("@serverwriter download sd locked");
         Music m = sdCloud.download(id);
+        m.lock();
+        System.out.println("@serverwriter download lim locked");
+        sdCloud.unlock();
+        sdCloud.startingDownload();
         Metadata meta = m.getMetadata();
         String path = "Biblioteca/" +id+".mp3";
         String b64 = ClientWriter.packager(path);
-        StringBuilder send = new StringBuilder();
-        send.append("DOWNLOAD ").append(meta.getYear()).append(" ").append(meta.getTitle())
-                .append(" ").append(meta.getArtist()).append(" ");
-
+        String send ="DOWNLOAD "+meta.getYear()+" "+meta.getTitle()+" "+meta.getArtist()+" ";
+        m.unlock();
         for(String tag: meta.getTags())
-            send.append(tag+",");
+            send+=tag+",";
 
-        send.append(" "+b64+"\n");
+        send+=" "+b64+"\n";
 
 
-        return send.toString();
+        return send;
     }
 
     /**
@@ -209,7 +215,9 @@ public class ServerReader implements Runnable
 
 
     public static void unpackager(String path, String data64) throws IOException {
+        System.out.println("unpackager1");
         byte[] ba = Base64.decodeBase64(data64);
+        System.out.println("unpackager1");
         Path pt = Paths.get(path);
         System.out.println("SERver reader unpackagerPt: "+pt.toString());
         Files.createDirectories(pt.getParent());

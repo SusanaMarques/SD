@@ -93,7 +93,8 @@ public class ClientReader  implements Runnable
 
     private void download(String p) throws IOException {
         String[] s=p.split(" ",5);
-        String path = "downloads/"+s[1]+".mp3";
+        System.out.println("download client reader");
+        String path=Thread.currentThread().getId()+"/"+s[1]+".mp3";
         ServerReader.unpackager(path,s[4]);
     }
 }

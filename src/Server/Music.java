@@ -1,5 +1,8 @@
 package Server;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Music {
     /**ID livre **/
     private static int ID = 1;
@@ -9,6 +12,8 @@ public class Music {
     private Metadata data;
     /** Número de downloads da música **/
     private int nDownloads;
+
+    private Lock l;
 
     /**
      * Construtor da classe Musica sem parametros
@@ -31,6 +36,7 @@ public class Music {
         this.id = ID++;
         this.data = data;
         this.nDownloads = nDownloads;
+        this.l= new ReentrantLock();
     }
 
     /**
@@ -82,5 +88,9 @@ public class Music {
         return  this.data.equals(m.getMetadata()) &&
                 this.nDownloads == m.getnDownloads();
     }
+
+    public void lock(){l.lock();}
+
+    public void unlock(){l.unlock();}
 
 }
