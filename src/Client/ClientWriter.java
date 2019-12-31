@@ -145,37 +145,10 @@ public class ClientWriter implements Runnable
      * @param path Path do ficheiro a enviar
     **/
     private String packager(String path) throws IOException {
-        //System.out.println("test@Cliwriter path:" + path);
         File f=new File(path);
         byte[] ba=Files.toByteArray(f);
-        // String veryBigS = new String(ba, StandardCharsets.UTF_8);
-        //System.out.println(ba.length+" :test cliwriter filename:"+ veryBigS.length());
-        //String ret = veryBigS.replace("\n"," [REGEXN] ").replace("\r"," [REGEXR] " );
-        String ret= Base64.encodeBase64String(ba);
-        //System.out.println("test@Cliwriter ba64:" + ret.length());
-
-        /*
-        String[] veryBigArrayofS = veryBigS.split("\n");
-        int len = veryBigArrayofS.length;
-        System.out.println("test@Cliwriter length :" + len);
-        StringBuilder ret=new StringBuilder("");
-
-        for(int i =0; i<len; i++){
-            ret.append("UPLFRAG ");
-            ret.append(i);
-            //ID fragmento i
-            ret.append(" ");
-            ret.append(len);
-            ret.append(" ");
-            //Quantidade de fragmentos a mandar
-            ret.append(veryBigArrayofS[i]);
-            ret.append("\n");
-            //Fragmento i a mandar
-        }
-        */
+        String ret = Base64.encodeBase64String(ba);
         return ret;
-
-
     }
 
     /**

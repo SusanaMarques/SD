@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static java.nio.file.StandardCopyOption.*;
 
@@ -99,16 +100,8 @@ public class ServerReader implements Runnable
             case "DOWNLOAD":
                 return this.download(p[1]);
             case "UPLOAD":
-                String[] s = p[1].split(" ",5);
-               // String byteReady = s[4].replace(" [REGEXN] ", "\n").replace(" [REGEXR] ", "\r");
-                byte[] ba = Base64.decodeBase64(s[4]);
-                String path = "Biblioteca/"+s[1];
-                Path pt = Paths.get(path);
-                Files.createDirectories(pt.getParent());
-                Files.write(pt, ba, StandardOpenOption.WRITE,StandardOpenOption.CREATE,StandardOpenOption.CREATE_NEW);
-                //System.out.println("ServerREader path :"+byteReady.length());
-                //System.out.println("ServerREader balen : "+ba.length);
-                return "WEE";
+                return this.upload(p[1]);
+
             case "SEARCH":
                 return this.search(p[1]);
             case "LIBRARY":
@@ -184,11 +177,25 @@ public class ServerReader implements Runnable
      * @param in       Linha lida do BufferedReader
      * @return         String
      */
-    private String upload(String in) {
-        String[] p = in.split(" ");
-        if (p.length < 6) //maybe mandar exception tem de receber os metadados todos e pelo menos 1 etiqueta
-            sdCloud.upload(p[0], Integer.parseInt(p[1]), p[2], p[3], p[4]);
+    private String upload(String payload) throws IOException {
+        String[] s = payload.split(" ",5);
+        String title = (s[1].isEmpty() ? "" + new Random().nextInt() : s[1]);
+        int ano = Integer.parseInt(s[0]);
+        String artist = s[2];
+        String tags = s[3];
+        sdCloud.upload(ano,title,artist,tags);
+        unpackager(title,s[4]);
+
         return "UPLOAD";
+    }
+
+
+    private void unpackager(String filename, String data64) throws IOException {
+        byte[] ba = Base64.decodeBase64(data64);
+        String path = "Biblioteca/"+filename;
+        Path pt = Paths.get(path);
+        Files.createDirectories(pt.getParent());
+        Files.write(pt, ba, StandardOpenOption.WRITE,StandardOpenOption.CREATE,StandardOpenOption.CREATE_NEW);
     }
 
     /**

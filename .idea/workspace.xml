@@ -2,21 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e40b8cc1-79ba-4663-be18-57a99b27d742" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/bcprov_jdk15to18_1_64.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_codec_1_13_javadoc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/guava_annotations_r03.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Exceptions/EmptyLibraryException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SistemasDistribuidos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SistemasDistribuidos.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/ClientReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/ClientReader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/ClientWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/ClientWriter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Server/SDCloud.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Server/SDCloud.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Server/ServerReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Server/ServerReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/ClientReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ClientWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/SDCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/SDCloud.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ServerReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerReader.java" afterDir="false" />
     </list>
@@ -280,40 +271,40 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="162" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1577621709318" />
-    <state x="543" y="317" width="308" height="216" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1577785450324">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="557" y="288" width="308" height="216" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1577797657550">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="543" y="317" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1440.900@0.0.1440.900" timestamp="1577785450324" />
-    <state x="557" y="288" width="308" height="216" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/67.27.1299.741@67.27.1299.741" timestamp="1576600969848" />
+    <state x="557" y="288" width="308" height="216" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/67.27.1299.741@67.27.1299.741" timestamp="1577797657550" />
     <state x="301" y="55" width="860" height="741" key="CommitChangelistDialog2" timestamp="1577725033919">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="301" y="55" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1577725033919" />
     <state x="354" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1576600822387" />
-    <state width="1398" height="166" key="GridCell.Tab.0.bottom" timestamp="1577795910656">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1253" height="231" key="GridCell.Tab.0.bottom" timestamp="1577800829661">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1398" height="166" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1577795910656" />
     <state width="1398" height="191" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1577788334856" />
-    <state width="1253" height="215" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1577753486667" />
-    <state width="1398" height="166" key="GridCell.Tab.0.center" timestamp="1577795910653">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1253" height="231" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1577800829661" />
+    <state width="1253" height="231" key="GridCell.Tab.0.center" timestamp="1577800829660">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1398" height="166" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1577795910653" />
     <state width="1398" height="191" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1577788334852" />
-    <state width="1253" height="215" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1577753486666" />
-    <state width="1398" height="166" key="GridCell.Tab.0.left" timestamp="1577795910650">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1253" height="231" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1577800829660" />
+    <state width="1253" height="231" key="GridCell.Tab.0.left" timestamp="1577800829660">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1398" height="166" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1577795910650" />
     <state width="1398" height="191" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1577788334849" />
-    <state width="1253" height="215" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1577753486665" />
-    <state width="1398" height="166" key="GridCell.Tab.0.right" timestamp="1577795910654">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1253" height="231" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1577800829660" />
+    <state width="1253" height="231" key="GridCell.Tab.0.right" timestamp="1577800829660">
+      <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state width="1398" height="166" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1577795910654" />
     <state width="1398" height="191" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1577788334853" />
-    <state width="1253" height="215" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1577753486666" />
+    <state width="1253" height="231" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1577800829660" />
     <state x="185" y="28" width="1024" height="822" key="SettingsEditor" timestamp="1577788315133">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

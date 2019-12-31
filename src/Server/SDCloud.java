@@ -73,9 +73,7 @@ public class SDCloud
     /**
      * Método que efetua um upload
      * */
-    public void upload(String path, int year, String title, String artist, String tags){
-        //IR BUSCAR O FICHEIRO PELO PATH
-
+    public void upload(int year, String title, String artist, String tags){
         String[] ts = tags.split(",");
         ArrayList<String> t = new ArrayList<String>(Arrays.asList(ts));
         Metadata data = new Metadata(year, title, artist, t);
