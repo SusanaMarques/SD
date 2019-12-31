@@ -1,9 +1,7 @@
 package Server;
 
 
-import Exceptions.InvalidRequestException;
-import Exceptions.InvalidTagsException;
-import Exceptions.UserExistsException;
+import Exceptions.*;
 
 import org.apache.commons.codec.binary.Base64;
 import java.io.*;
@@ -55,7 +53,7 @@ public class ServerReader implements Runnable
         String r;
         while ((r = readLine()) != null) {
             try { msg.write(parsing(r)); } catch (IndexOutOfBoundsException e) { msg.write("WRONG"); }
-            catch (InvalidRequestException | InvalidTagsException | UserExistsException | InterruptedException | IOException e) { msg.write(e.getMessage()); }
+            catch (InvalidRequestException | InvalidTagsException | EmptyLibraryException | UserExistsException | InterruptedException | MusicDoesntExistException| IOException e) { msg.write(e.getMessage()); }
         }
         // endConnection();
         if (this.user == null) {
@@ -85,7 +83,8 @@ public class ServerReader implements Runnable
      * @throws Exceptions.UserExistsException
      * @throws InterruptedException
      */
-    private String parsing(String r) throws UserExistsException, InterruptedException, InvalidRequestException, InvalidTagsException, IOException {
+    private String parsing(String r) throws UserExistsException, InterruptedException, EmptyLibraryException, InvalidRequestException, InvalidTagsException, EmptyLibraryException, IOException, MusicDoesntExistException {
+        System.out.println("ENTROU");
         String[] p = r.split(" ", 2);
         switch (p[0].toUpperCase()) {
             case "LOGIN":
@@ -98,7 +97,7 @@ public class ServerReader implements Runnable
                 autentication(false);
                 return this.registration(p[1]);
             case "DOWNLOAD":
-                //return this.download(p[1]);
+                return this.download(p[1]);
             case "UPLOAD":
                 String[] s = p[1].split(" ",5);
                // String byteReady = s[4].replace(" [REGEXN] ", "\n").replace(" [REGEXR] ", "\r");
@@ -112,6 +111,9 @@ public class ServerReader implements Runnable
                 return "WEE";
             case "SEARCH":
                 return this.search(p[1]);
+            case "LIBRARY":
+                System.out.println("RECEBEU");
+                return this.showLibrary();
             default:
                 return "ERRO!";
         }
@@ -148,13 +150,9 @@ public class ServerReader implements Runnable
      * @throws        Exceptions.UserExistsException
      */
     private String registration(String in) throws InvalidRequestException, UserExistsException {
-        System.out.print("3");
         String[] p = in.split(" ");
-        System.out.print("4");
         if (p.length != 2) throw new InvalidRequestException("Credenciais Erradas!");
-        System.out.print("1");
         sdCloud.registration(p[0], p[1]);
-        System.out.print("2");
         return "REGISTER";
     }
 
@@ -174,13 +172,12 @@ public class ServerReader implements Runnable
      * Método que efetua um download
      * @param in       Linha lida do BufferedReader
      * @return         String
-
-    private String download(String in) {
+     */
+    private String download(String in) throws MusicDoesntExistException {
         int id = Integer.parseInt(in);
-        ....
-        sdCloud.download();
+        sdCloud.download(id);
         return "DOWNLOAD";
-    }  */
+    }
 
     /**
      * Método que efetua um upload
@@ -205,6 +202,15 @@ public class ServerReader implements Runnable
              throw new Exceptions.InvalidTagsException("Etiqueta Inválida");
         sdCloud.search(p[0]);
         return "SEARCH";
+    }
+
+    /**
+     * Método que mostra a biblioteca de músicas da cloud
+     * @return         String
+     */
+    private String showLibrary() throws EmptyLibraryException {
+        sdCloud.showLibrary();
+        return "LIBRARY";
     }
 
 }

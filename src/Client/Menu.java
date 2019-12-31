@@ -41,7 +41,8 @@ public class Menu
                 System.out.println(">> MENU <<        \n" +
                         "> 1 - Iniciar Sessao         \n" +
                         "> 2 - Registar utilizador    \n" +
-                        "> 0 - Sair                   \n");
+                        "> 0 - Sair                   \n\n"  +
+                        "> Opção:                      ");
                 break;
 
             case 1:
@@ -49,7 +50,9 @@ public class Menu
                         "> 1 - Upload de música       \n" +
                         "> 2 - Download de música     \n" +
                         "> 3 - Procurar música        \n" +
-                        "> 0 - Terminar Sessão        \n");
+                        "> 4 - Biblioteca             \n" +
+                        "> 0 - Terminar Sessão        \n\n" +
+                        "> Opção:                     ");
                 break;
         }
     }
@@ -61,12 +64,10 @@ public class Menu
     public int readOption()
     {
         int n;
-
         try { n = Integer.parseInt(in.nextLine()); } catch (NumberFormatException e) {
             System.out.println("\n>Valor inválido\n");
             n = -1;
         }
-
         return n;
     }
 
@@ -81,14 +82,11 @@ public class Menu
     }
 
     public Integer op() {
-        System.out.println("Opção: ");
-        int opcao = readOption();
+        int op = readOption();
         if (opt == 0) {
-            while (opcao < 0 || opcao > 2) {
-                System.out.println("Opção: ");
-                opcao = readOption();
-            }
+            while (op < 0 || op > 2)
+                op = readOption();
         }
-        return opcao;
+        return op;
     }
 }

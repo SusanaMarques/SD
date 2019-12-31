@@ -2,12 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e40b8cc1-79ba-4663-be18-57a99b27d742" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/bcprov_jdk15to18_1_64.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_codec_1_13_javadoc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/guava_annotations_r03.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exceptions/EmptyLibraryException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SistemasDistribuidos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SistemasDistribuidos.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/ClientReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/ClientReader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/ClientWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/ClientWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Client/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Server/SDCloud.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Server/SDCloud.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Server/ServerReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemasDistribuidos/Server/ServerReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/ClientReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ClientWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/SDCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/SDCloud.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ServerReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,13 +69,17 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573596981833" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -152,6 +166,9 @@
       <workItem from="1577652620845" duration="8512000" />
       <workItem from="1577736203106" duration="1502000" />
       <workItem from="1577739483130" duration="1637000" />
+      <workItem from="1577785444235" duration="891000" />
+      <workItem from="1577786946029" duration="4785000" />
+      <workItem from="1577794764921" duration="1135000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1576581496200</created>
@@ -263,45 +280,57 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="162" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1577621709318" />
-    <state x="543" y="317" width="308" height="216" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1577368584308">
+    <state x="543" y="317" width="308" height="216" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1577785450324">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="543" y="317" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1440.900@0.0.1440.900" timestamp="1577368584308" />
+    <state x="543" y="317" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1440.900@0.0.1440.900" timestamp="1577785450324" />
     <state x="557" y="288" width="308" height="216" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/67.27.1299.741@67.27.1299.741" timestamp="1576600969848" />
     <state x="301" y="55" width="860" height="741" key="CommitChangelistDialog2" timestamp="1577725033919">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="301" y="55" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1577725033919" />
     <state x="354" y="27" width="860" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1576600822387" />
-    <state width="1253" height="215" key="GridCell.Tab.0.bottom" timestamp="1577753486667">
-      <screen x="67" y="27" width="1299" height="741" />
+    <state width="1398" height="166" key="GridCell.Tab.0.bottom" timestamp="1577795910656">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="191" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1577741360972" />
+    <state width="1398" height="166" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1577795910656" />
+    <state width="1398" height="191" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1577788334856" />
     <state width="1253" height="215" key="GridCell.Tab.0.bottom/67.27.1299.741@67.27.1299.741" timestamp="1577753486667" />
-    <state width="1253" height="215" key="GridCell.Tab.0.center" timestamp="1577753486666">
-      <screen x="67" y="27" width="1299" height="741" />
+    <state width="1398" height="166" key="GridCell.Tab.0.center" timestamp="1577795910653">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="191" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1577741360969" />
+    <state width="1398" height="166" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1577795910653" />
+    <state width="1398" height="191" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1577788334852" />
     <state width="1253" height="215" key="GridCell.Tab.0.center/67.27.1299.741@67.27.1299.741" timestamp="1577753486666" />
-    <state width="1253" height="215" key="GridCell.Tab.0.left" timestamp="1577753486665">
-      <screen x="67" y="27" width="1299" height="741" />
+    <state width="1398" height="166" key="GridCell.Tab.0.left" timestamp="1577795910650">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="191" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1577741360968" />
+    <state width="1398" height="166" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1577795910650" />
+    <state width="1398" height="191" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1577788334849" />
     <state width="1253" height="215" key="GridCell.Tab.0.left/67.27.1299.741@67.27.1299.741" timestamp="1577753486665" />
-    <state width="1253" height="215" key="GridCell.Tab.0.right" timestamp="1577753486666">
-      <screen x="67" y="27" width="1299" height="741" />
+    <state width="1398" height="166" key="GridCell.Tab.0.right" timestamp="1577795910654">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="191" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1577741360971" />
+    <state width="1398" height="166" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1577795910654" />
+    <state width="1398" height="191" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1577788334853" />
     <state width="1253" height="215" key="GridCell.Tab.0.right/67.27.1299.741@67.27.1299.741" timestamp="1577753486666" />
+    <state x="185" y="28" width="1024" height="822" key="SettingsEditor" timestamp="1577788315133">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="185" y="28" width="1024" height="822" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1577788315133" />
     <state x="320" y="191" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1577725037328">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="191" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1577725037328" />
     <state x="356" y="184" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1576600825060" />
-    <state x="374" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1577736203373">
+    <state x="374" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1577794763980">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="374" y="281" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1577736203373" />
+    <state x="374" y="281" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1577794763980" />
+    <state x="424" y="337" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1577787466427">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="424" y="337" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1440.900@0.0.1440.900" timestamp="1577787466427" />
     <state x="503" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576581434773">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -314,93 +343,5 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1577738610637" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>javafx</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>SistemasDistribuidos</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

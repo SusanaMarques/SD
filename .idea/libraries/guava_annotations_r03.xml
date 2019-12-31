@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="guava-annotations-r03">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jar_files/guava-annotations-r03.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar_files/guava-base-r03.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar_files/guava-io-r03.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

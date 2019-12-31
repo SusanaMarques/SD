@@ -3,7 +3,6 @@ package Client;
 import com.google.common.io.Files;
 import org.apache.commons.codec.binary.Base64;
 import org.bouncycastle.util.encoders.UTF8;
-
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
@@ -53,9 +52,12 @@ public class ClientWriter implements Runnable
     private void parsing(Integer op) throws IOException{
         switch (menu.getOpt()) {
             case 0:
-                if (op == 0) System.exit(0);
-                if (op == 1) {login();}
-                if (op == 2) {registration(); }
+                if (op == 0)
+                    System.exit(0);
+                if (op == 1)
+                    login();
+                if (op == 2)
+                    registration();
                 break;
             case 1:
                 if(op == 0)
@@ -66,6 +68,8 @@ public class ClientWriter implements Runnable
                     download();
                 if(op == 3)
                     search();
+                if(op == 4)
+                    showLibrary();
                 break;
         }
     }
@@ -136,9 +140,10 @@ public class ClientWriter implements Runnable
         out.newLine();
         out.flush();
     }
-/** Método de codificação do ficheiro para transmitir
- * @param path Path do ficheiro a enviar
-**/
+
+    /** Método de codificação do ficheiro para transmitir
+     * @param path Path do ficheiro a enviar
+    **/
     private String packager(String path) throws IOException {
         //System.out.println("test@Cliwriter path:" + path);
         File f=new File(path);
@@ -185,5 +190,13 @@ public class ClientWriter implements Runnable
         out.flush();
     }
 
-
+    /**
+     * Método que indica ao servidor que o utilizador pretende aceder à biblioteca
+     * @throws IOException
+     */
+    private void showLibrary() throws IOException {
+        out.write("LIBRARY");
+        out.newLine();
+        out.flush();
+    }
 }

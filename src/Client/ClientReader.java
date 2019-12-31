@@ -70,6 +70,9 @@ public class ClientReader  implements Runnable
             case "SEARCH":
                 menu.setOpt(1);
                 menu.showMenu();
+            case "LIBRARY":
+                menu.setOpt(1);
+                menu.showMenu();
             default:
                 System.out.println(c);
                 menu.showMenu();

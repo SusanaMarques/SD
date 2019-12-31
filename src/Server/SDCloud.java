@@ -1,6 +1,7 @@
 package Server;
 
 import Exceptions.InvalidTagsException;
+import Exceptions.MusicDoesntExistException;
 
 import java.util.*;
 import java.util.concurrent.locks.Lock;
@@ -99,6 +100,26 @@ public class SDCloud
                 ArrayList<String> tags = data.getTags();
                 if(tags.contains(tag))
                     c.add(m);
+            }
+        } finally { libraryLock.unlock(); }
+
+    }
+
+    /**
+     * Método que mostra as músicas disponiveis na biblioteca da cloud
+     * */
+    public void showLibrary() throws Exceptions.EmptyLibraryException
+    {
+        libraryLock.lock();
+        System.out.println("here");
+        if(library.size() < 1)
+            throw new  Exceptions.EmptyLibraryException("Biblioteca Vazia!");
+        try
+        {
+            for(Map.Entry<Integer,Music> e : library.entrySet())
+            {
+                String title = e.getValue().getMetadata().getTitle();
+                System.out.print("Id: " + e.getKey() + " " + "Titulo: " + title);
             }
         } finally { libraryLock.unlock(); }
 

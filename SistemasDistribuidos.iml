@@ -7,5 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="commons-codec-1.13-src" level="application" />
+    <orderEntry type="library" name="bcprov-jdk15to18-1.64" level="project" />
+    <orderEntry type="library" name="commons-codec-1.13-javadoc" level="project" />
+    <orderEntry type="library" name="guava-annotations-r03" level="project" />
   </component>
 </module>
