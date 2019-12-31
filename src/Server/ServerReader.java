@@ -4,10 +4,23 @@ package Server;
 import Exceptions.InvalidRequestException;
 import Exceptions.InvalidTagsException;
 import Exceptions.UserExistsException;
+
+import org.apache.commons.codec.binary.Base64;
+import java.io.*;
 import java.net.Socket;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.nio.file.StandardCopyOption.*;
 
 public class ServerReader implements Runnable
 {
@@ -42,7 +55,7 @@ public class ServerReader implements Runnable
         String r;
         while ((r = readLine()) != null) {
             try { msg.write(parsing(r)); } catch (IndexOutOfBoundsException e) { msg.write("WRONG"); }
-            catch (InvalidRequestException | InvalidTagsException | UserExistsException  | InterruptedException e) { msg.write(e.getMessage()); }
+            catch (InvalidRequestException | InvalidTagsException | UserExistsException | InterruptedException | IOException e) { msg.write(e.getMessage()); }
         }
         // endConnection();
         if (this.user == null) {
@@ -72,7 +85,7 @@ public class ServerReader implements Runnable
      * @throws Exceptions.UserExistsException
      * @throws InterruptedException
      */
-    private String parsing(String r) throws UserExistsException, InterruptedException, InvalidRequestException, InvalidTagsException {
+    private String parsing(String r) throws UserExistsException, InterruptedException, InvalidRequestException, InvalidTagsException, IOException {
         String[] p = r.split(" ", 2);
         switch (p[0].toUpperCase()) {
             case "LOGIN":
@@ -87,7 +100,16 @@ public class ServerReader implements Runnable
             case "DOWNLOAD":
                 //return this.download(p[1]);
             case "UPLOAD":
-                //return this.upload(p[1]);
+                String[] s = p[1].split(" ",5);
+               // String byteReady = s[4].replace(" [REGEXN] ", "\n").replace(" [REGEXR] ", "\r");
+                byte[] ba = Base64.decodeBase64(s[4]);
+                String path = "Biblioteca/"+s[1];
+                Path pt = Paths.get(path);
+                Files.createDirectories(pt.getParent());
+                Files.write(pt, ba, StandardOpenOption.WRITE,StandardOpenOption.CREATE,StandardOpenOption.CREATE_NEW);
+                //System.out.println("ServerREader path :"+byteReady.length());
+                //System.out.println("ServerREader balen : "+ba.length);
+                return "WEE";
             case "SEARCH":
                 return this.search(p[1]);
             default:

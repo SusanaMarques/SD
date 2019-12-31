@@ -1,7 +1,12 @@
 package Client;
 
+import com.google.common.io.Files;
+import org.apache.commons.codec.binary.Base64;
+import org.bouncycastle.util.encoders.UTF8;
+
 import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class ClientWriter implements Runnable
 {
@@ -125,10 +130,47 @@ public class ClientWriter implements Runnable
         String a = menu.readString("Artista:   \n");
         System.out.println("> Inserir as etiquetas separadas por virgulas e sem espaços     \n");
         String e = menu.readString("Etiquetas: \n");
-        String q = String.join(" ", "UPLOAD", path, y, t, a, e);
+        String q = String.join(" ", "UPLOAD", y, t, a, e);
         out.write(q);
+        out.write(" "+packager(path));
         out.newLine();
         out.flush();
+    }
+/** Método de codificação do ficheiro para transmitir
+ * @param path Path do ficheiro a enviar
+**/
+    private String packager(String path) throws IOException {
+        //System.out.println("test@Cliwriter path:" + path);
+        File f=new File(path);
+        byte[] ba=Files.toByteArray(f);
+        // String veryBigS = new String(ba, StandardCharsets.UTF_8);
+        //System.out.println(ba.length+" :test cliwriter filename:"+ veryBigS.length());
+        //String ret = veryBigS.replace("\n"," [REGEXN] ").replace("\r"," [REGEXR] " );
+        String ret= Base64.encodeBase64String(ba);
+        //System.out.println("test@Cliwriter ba64:" + ret.length());
+
+        /*
+        String[] veryBigArrayofS = veryBigS.split("\n");
+        int len = veryBigArrayofS.length;
+        System.out.println("test@Cliwriter length :" + len);
+        StringBuilder ret=new StringBuilder("");
+
+        for(int i =0; i<len; i++){
+            ret.append("UPLFRAG ");
+            ret.append(i);
+            //ID fragmento i
+            ret.append(" ");
+            ret.append(len);
+            ret.append(" ");
+            //Quantidade de fragmentos a mandar
+            ret.append(veryBigArrayofS[i]);
+            ret.append("\n");
+            //Fragmento i a mandar
+        }
+        */
+        return ret;
+
+
     }
 
     /**
