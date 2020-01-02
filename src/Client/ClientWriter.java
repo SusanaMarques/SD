@@ -35,12 +35,9 @@ public class ClientWriter implements Runnable
     public void run() {
         int op;
         try {
-            while ((op = menu.op()) != -1) {
+            while ((op = menu.op()) != -1)
                 parsing(op);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) { e.printStackTrace(); }
     }
 
     /**
@@ -134,26 +131,25 @@ public class ClientWriter implements Runnable
      * @throws IOException
      */
     private void upload() throws IOException{
-        String path = menu.readString("Path:   \n");
-        System.out.println("> Inserir metadados     \n");
-        String y = menu.readString("Ano:       \n");
-        String t = menu.readString("Título:    \n");
-        String a = menu.readString("Artista:   \n");
-        System.out.println("> Inserir as etiquetas separadas por virgulas e sem espaços     \n");
-        String e = menu.readString("Etiquetas: \n");
+        String path = menu.readString("Path:");
+        System.out.println("> Inserir metadados");
+        String y = menu.readString("Ano:");
+        String t = menu.readString("Título:");
+        String a = menu.readString("Artista:");
+        System.out.println("> Inserir as etiquetas separadas por virgulas e sem espaços");
+        String e = menu.readString("Etiquetas:");
         String q = String.join(" ", "UPLOAD", y, t, a, e,packager(path));
         out.write(q);
         out.newLine();
         out.flush();
-
     }
 
     /** Método de codificação do ficheiro para transmitir
      * @param path Path do fString artist = s[2];icheiro a enviar
     **/
     public static String packager(String path) throws IOException {
-        File f=new File(path);
-        byte[] ba=Files.toByteArray(f);
+        File f = new File(path);
+        byte[] ba = Files.toByteArray(f);
         String ret = Base64.encodeBase64String(ba);
         return ret;
     }
@@ -178,6 +174,5 @@ public class ClientWriter implements Runnable
         out.write("LIBRARY");
         out.newLine();
         out.flush();
-
     }
 }

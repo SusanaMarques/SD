@@ -186,19 +186,18 @@ public class ServerReader implements Runnable
         String b64 = ClientWriter.packager(path);
         String send ="DOWNLOAD "+meta.getYear()+" "+meta.getTitle()+" "+meta.getArtist()+" ";
         m.unlock();
+
         for(String tag: meta.getTags())
             send+=tag+",";
 
         send+=" "+b64+"\n";
-
-
         return send;
     }
 
     /**
      * Método que efetua um upload
      * @param payload       Linha lida do BufferedReader
-     * @return         String
+     * @return              String
      */
     private String upload(String payload) throws IOException {
         String[] s = payload.split(" ",5);
@@ -214,13 +213,18 @@ public class ServerReader implements Runnable
         return "UPLOAD";
     }
 
-
+    /**
+     * Método que ....
+     * @param path
+     * @param data64
+     * @throws IOException
+     */
     public static void unpackager(String path, String data64) throws IOException {
         System.out.println("unpackager1");
         byte[] ba = Base64.decodeBase64(data64);
         System.out.println("unpackager1");
         Path pt = Paths.get(path);
-        System.out.println("SERver reader unpackagerPt: "+pt.toString());
+        System.out.println("SERver reader unpackagerPt: " + pt.toString());
         Files.createDirectories(pt.getParent());
         Files.write(pt, ba, StandardOpenOption.WRITE,StandardOpenOption.CREATE,StandardOpenOption.CREATE_NEW);
     }
@@ -241,8 +245,6 @@ public class ServerReader implements Runnable
      * Método que mostra a biblioteca de músicas da cloud
      * @return         String
      */
-    private String showLibrary() throws EmptyLibraryException, InterruptedException {
-        return sdCloud.showLibrary();
-    }
+    private String showLibrary() throws EmptyLibraryException, InterruptedException { return sdCloud.showLibrary(); }
 
 }

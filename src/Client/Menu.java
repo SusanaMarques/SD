@@ -26,13 +26,13 @@ public class Menu
 
     /**
      * Método que devolve o valor da opção.
-     * @return       Opção
+     * @return Opção
      */
     public int getOpt(){ return this.opt; }
 
     /**
      * Método que altera o valor da opção
-     * @param n         Novo valor da opção
+     * @param n Novo valor da opção
      */
     public void setOpt(int n){
         this.opt = n;
@@ -67,13 +67,13 @@ public class Menu
 
     /**
      * Método que lê a opção selecionada do menu.
-     *@return            Opção
+     *@return Opção
      */
     public int readOption()
     {
         int n;
         try { n = Integer.parseInt(in.nextLine()); } catch (NumberFormatException e) {
-            System.out.println("\n>Valor inválido\n");
+            System.out.println("\n> Valor inválido, tente de novo: \n");
             n = -1;
         }
         return n;
@@ -81,7 +81,7 @@ public class Menu
 
     /**
      * Método que lê uma mensagem
-     * @return        Mensagem lida
+     * @return Mensagem lida
      */
     public String readString(String m)
     {
@@ -89,11 +89,26 @@ public class Menu
         return in.nextLine();
     }
 
+    /**
+     * Método que devolve a opção inserida, verificando se é valida.
+     * @return Opção inserida
+     */
     public Integer op() {
         int op = readOption();
         if (opt == 0) {
-            while (op < 0 || op > 2)
+            if (op < 0 || op > 2)
+            {
+                System.out.println("> Opção Inválida, tente de novo: ");
                 op = readOption();
+            }
+        }
+        if(opt == 1)
+        {
+            if (op < 0 || op > 4 )
+            {
+                System.out.println("> Opção Inválida, tente de novo: ");
+                op = readOption();
+            }
         }
         return op;
     }

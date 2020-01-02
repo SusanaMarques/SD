@@ -4,9 +4,6 @@ import java.net.Socket;
 import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 
 public class ServerWriter implements Runnable
 {

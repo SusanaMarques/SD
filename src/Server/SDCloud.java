@@ -22,18 +22,19 @@ public class SDCloud
     private Map<Integer, Music> library;
     /** Lock da biblioteca de músicas da cloud */
     private Lock libraryLock = new ReentrantLock();
-
+    /** Lock da cloud **/
     private Lock sdCloudlock = new ReentrantLock();
-
-    private int downloading=0;
+    /** **/
+    private int downloading = 0;
+    /** Lock do download **/
     private Lock downlock = new ReentrantLock();
+    /** **/
     private Condition cd = downlock.newCondition();
 
 
 
-
     /**
-     * Construtor da classe Server.SDCloud sem parâmetros
+     * Construtor da classe SDCloud sem parâmetros
      */
     public SDCloud(){
         this.users = new HashMap<>();
@@ -41,10 +42,21 @@ public class SDCloud
     }
 
     /**
+     * Método que faz o lock da cloud
+     */
+    public void lock(){
+        sdCloudlock.lock();
+    }
+
+    /**
+     * Método que faz o unlock da cloud
+     */
+    public void unlock(){ sdCloudlock.unlock(); }
+
+    /**
      * Método que efetua o registo um utilizador
      * @param username           Username do utilizador
      * @param password           Password do utilizador
-     *
      * @throws Exceptions.UserExistsException
      */
     public void registration(String username, String password) throws  Exceptions.UserExistsException{
@@ -78,7 +90,10 @@ public class SDCloud
 
     /**
      * Método que efetua um download
-     * */
+     * @param id       Id da música a descarregar
+     * @return         Música a descarregar
+     * @throws Exceptions.MusicDoesntExistException, IOException
+     */
     public Music download(int id) throws Exceptions.MusicDoesntExistException, IOException {
         libraryLock.lock();
         Music m;
@@ -88,13 +103,17 @@ public class SDCloud
             library.put(id,m);
         }
         finally {libraryLock.unlock(); }
-
         return m;
     }
 
     /**
      * Método que efetua um upload
-     * */
+     * @param year        Ano de lançamento da música
+     * @param title       Titulo da música
+     * @param artist      Arista da música
+     * @param tags        Etiquetas da música
+     * @return            Id da música
+     */
     public int upload(int year, String title, String artist, String tags){
         String[] ts = tags.split(",");
         ArrayList<String> t = new ArrayList<String>(Arrays.asList(ts));
@@ -111,7 +130,7 @@ public class SDCloud
 
     /**
      * Método que efetua uma pesquisa através das etiquetas passadas como parametro UNFINISHED
-     * */
+     */
     public String search(String tag) throws InvalidTagsException {
         libraryLock.lock();
         String t="";
@@ -130,44 +149,34 @@ public class SDCloud
             }
         }
         finally { libraryLock.unlock(); }
-        if(t=="") throw new Exceptions.InvalidTagsException("Tag não existe!");
+        if(t == "") throw new Exceptions.InvalidTagsException("Tag não existe!");
 
         return ("SEARCH    " + t);
     }
 
     /**
      * Método que mostra as músicas disponiveis na biblioteca da cloud
-     * */
+     */
     public String showLibrary() throws Exceptions.EmptyLibraryException {
         libraryLock.lock();
-
         String t="";
         try {
 
             for (Map.Entry<Integer, Music> e : library.entrySet()) {
                 String title = e.getValue().getMetadata().getTitle();
 
-                t= t+ "Id: " + e.getKey() + "    Title: " + title + "\n";
+                t = t + "Id: " + e.getKey() + "    Title: " + title + "\n";
                 //ret.append("         " + e.getKey() + "   " + title + "\n");
             }
-
-
-        } finally {
-            libraryLock.unlock();
-        }
-        if (library.size() < 1)
-            throw new Exceptions.EmptyLibraryException("Biblioteca Vazia!");
-
+        } finally { libraryLock.unlock(); }
+        if (library.size() < 1) throw new Exceptions.EmptyLibraryException("Biblioteca Vazia!");
     return ("LIBRARY    " + t);
     }
 
-    public void lock(){
-        sdCloudlock.lock();
-    }
-    public void unlock(){
-        sdCloudlock.unlock();
-    }
 
+    /**
+     * Método que ....
+     */
     public void startingDownload() {
         downlock.lock();
         try {
@@ -180,6 +189,9 @@ public class SDCloud
 
     }
 
+    /**
+     * Método que ....
+     */
     public void finishedDownloading() {
         downlock.lock();
         downloading--;

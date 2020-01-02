@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cxf-core-3.2.10">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../jar_files/cxf-core-3.2.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

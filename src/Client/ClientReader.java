@@ -19,7 +19,6 @@ public class ClientReader  implements Runnable
 
     /**
      * Construtor da classe ClientReader parametrizado
-     *
      * @param m         Menu de opções
      * @param s         Socket
      * @throws          IOException
@@ -28,7 +27,6 @@ public class ClientReader  implements Runnable
         this.menu = m;
         this.socket = s;
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
     }
 
     /**
@@ -40,9 +38,7 @@ public class ClientReader  implements Runnable
             String command;
             while ((command = in.readLine()) != null)
                 parsing(command);
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException | InterruptedException e) { e.printStackTrace(); }
     }
 
     /**
@@ -83,11 +79,7 @@ public class ClientReader  implements Runnable
                 System.out.println(c);
                 menu.showMenu();
                 break;
-
-
         }
     }
-
-
 }
 

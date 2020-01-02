@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Music {
-    /**ID livre **/
+    /** ID livre **/
     private static int ID = 1;
     /** Id da música **/
     private int id;
@@ -12,7 +12,7 @@ public class Music {
     private Metadata data;
     /** Número de downloads da música **/
     private int nDownloads;
-
+    /** Lock da música **/
     private Lock l;
 
     /**
@@ -89,8 +89,14 @@ public class Music {
                 this.nDownloads == m.getnDownloads();
     }
 
+    /**
+     * Método que faz o lock da música
+     */
     public void lock(){l.lock();}
 
+    /**
+     * Método que faz o unlock da música
+     */
     public void unlock(){l.unlock();}
 
 }
