@@ -72,14 +72,16 @@ public class ClientReader  implements Runnable
                 break;
             case "SEARCH":
                 menu.setOpt(1);
-                System.out.println(c);
+                repl(c);
+                menu.showMenu();
                 break;
             case "LIBRARY":
                 menu.setOpt(1);
-                System.out.println(c);
+                repl(c);
+                menu.showMenu();
                 break;
             default:
-             //   System.out.println(c);
+                System.out.println(c);
                 menu.showMenu();
                 break;
         }
@@ -91,6 +93,13 @@ public class ClientReader  implements Runnable
         long var10000 = Thread.currentThread().getId();
         String path = var10000 + "/" + s[1] + ".mp3";
         ServerReader.unpackager(path, s[4]);
+    }
+
+    private void repl(String c){
+        String[] a= c.split(" ",2);
+        String b = a[1].replace("[]","\n");
+        System.out.println(b);
+
     }
 
 
