@@ -1,4 +1,5 @@
 package Client;
+import Server.ServerWriter;
 import com.google.common.io.Files;
 import org.apache.commons.codec.binary.Base64;
 import java.io.*;
@@ -139,9 +140,27 @@ public class ClientWriter implements Runnable
         System.out.println("> Inserir as etiquetas separadas por virgulas e sem espaços");
         String e = menu.readString("Etiquetas:");
         String q = String.join(" ", "UPLOAD", y, t, a, e,packager(path));
+
+        String frags = fragger(packager(path));
+        out.write(frags);
         out.write(q);
         out.newLine();
         out.flush();
+    }
+
+    private String fragger(String pack) {
+        String ret="";
+        int allfrags =  (pack.length()/ServerWriter.MAXSIZE) +
+                (((pack.length()%ServerWriter.MAXSIZE))==0 ? 0 : 1);
+
+        if(pack.length()> ServerWriter.MAXSIZE) {
+            for(int i=0,fragno=0;i<pack.length();fragno++) {
+                ret+="UPLFRAG " + fragno + " " + allfrags +" ";
+                ret += pack.substring(i,i+=ServerWriter.MAXSIZE);
+                ret+="\n";
+            }
+        }
+        return ret;
     }
 
     /** Método de codificação do ficheiro para transmitir

@@ -107,6 +107,8 @@ public class ServerReader implements Runnable
                 return this.download(p[1]);
             case "UPLOAD":
                 return this.upload(p[1]);
+            case "UPLFRAG":
+                return this.uploadFrag(p[1]);
             case "SEARCH":
                 return this.search(p[1]);
             case "LIBRARY":
@@ -115,6 +117,10 @@ public class ServerReader implements Runnable
             default:
                 return "ERRO!";
         }
+    }
+
+    private void uploadFrag(String s) {
+
     }
 
     /**

@@ -11,6 +11,8 @@ public class ServerWriter implements Runnable
     private BufferedWriter out;
     private SDCloud sdCloud;
 
+    public static int MAXSIZE = 1000;
+
     /**
      * Construtor da classe ServerWriter parametrizado
      * @param msg      Buffer de mensagens
@@ -32,7 +34,6 @@ public class ServerWriter implements Runnable
         while (true) {
             try {
                 String r = msg.read();
-                last = r.split(" ",2)[0];
                 System.out.println("MAYBE NOT EMPTY:"+last+"/S");
                 if(last.equals("DOWNLOAD")){
                     System.out.println("Actual serverwriteer lim locking");
@@ -43,6 +44,7 @@ public class ServerWriter implements Runnable
                 out.write(r);
                 out.newLine();
                 out.flush();
+                last = r.split(" ",2)[0];
 
             } catch (IOException | InterruptedException e) { e.printStackTrace(); }
 
