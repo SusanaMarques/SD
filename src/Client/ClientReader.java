@@ -1,5 +1,7 @@
 package Client;
 
+import Server.ServerReader;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -66,6 +68,7 @@ public class ClientReader  implements Runnable
                 break;
             case "DOWNLOAD":
                 menu.setOpt(1);
+                download(p[1]);
                 break;
             case "SEARCH":
                 menu.setOpt(1);
@@ -81,5 +84,16 @@ public class ClientReader  implements Runnable
                 break;
         }
     }
+
+    private void download(String p) throws IOException {
+        String[] s = p.split(" ", 5);
+        System.out.println("download client reader");
+        long var10000 = Thread.currentThread().getId();
+        String path = var10000 + "/" + s[1] + ".mp3";
+        ServerReader.unpackager(path, s[4]);
+    }
+
+
+
 }
 
