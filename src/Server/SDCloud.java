@@ -99,8 +99,10 @@ public class SDCloud
         Music m;
         try{
             m = library.get(id);
+            m.lock();
             m.setnDownloads( m.getnDownloads()+1 );
-            library.put(id,m);
+            m.unlock();
+            library.replace(id,m);
         }
         finally {libraryLock.unlock(); }
         return m;

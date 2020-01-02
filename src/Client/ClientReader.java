@@ -79,7 +79,7 @@ public class ClientReader  implements Runnable
                 System.out.println(c);
                 break;
             default:
-                System.out.println(c);
+             //   System.out.println(c);
                 menu.showMenu();
                 break;
         }
