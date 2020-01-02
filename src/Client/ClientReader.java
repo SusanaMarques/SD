@@ -1,11 +1,12 @@
 package Client;
 
-import Server.ServerReader;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 
 public class ClientReader  implements Runnable
 {
@@ -27,6 +28,7 @@ public class ClientReader  implements Runnable
         this.menu = m;
         this.socket = s;
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
     }
 
     /**
@@ -38,7 +40,7 @@ public class ClientReader  implements Runnable
             String command;
             while ((command = in.readLine()) != null)
                 parsing(command);
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -47,7 +49,7 @@ public class ClientReader  implements Runnable
      * Método que faz o parse do comando recebido
      * @param c Comando recebido
      */
-    private synchronized void parsing(String c) throws IOException {
+    private void parsing(String c) throws IOException, InterruptedException {
         String[] p = c.split(" ", 2);
         switch (p[0].toUpperCase()) {
             case "AUTENTICATED":
@@ -68,34 +70,24 @@ public class ClientReader  implements Runnable
                 break;
             case "DOWNLOAD":
                 menu.setOpt(1);
-                download(p[1]);
-                menu.showMenu();
+                break;
             case "SEARCH":
                 menu.setOpt(1);
-                menu.showMenu();
+                System.out.println(c);
+                break;
             case "LIBRARY":
                 menu.setOpt(1);
-                showLib(p[1]);
-                menu.showMenu();
+                System.out.println(c);
+                break;
             default:
                 System.out.println(c);
                 menu.showMenu();
+                break;
+
+
         }
     }
 
-    private void showLib(String p) {
-        String[] s = p.split(" ");
-        for(int i =0;i<s.length;i+=2){
-            System.out.println(s[i]+" "+ s[i+1]+"\n");
-        }
 
-    }
-
-    private void download(String p) throws IOException {
-        String[] s=p.split(" ",5);
-        System.out.println("download client reader");
-        String path=Thread.currentThread().getId()+"/"+s[1]+".mp3";
-        ServerReader.unpackager(path,s[4]);
-    }
 }
 

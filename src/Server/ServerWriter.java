@@ -4,6 +4,8 @@ import java.net.Socket;
 import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 public class ServerWriter implements Runnable
@@ -28,22 +30,25 @@ public class ServerWriter implements Runnable
      * Método que executa a thread ServerWriter
      */
     @Override
-    public void run() {
+    public  void run() {
         String last="";
         while (true) {
             try {
                 String r = msg.read();
+                last = r.split(" ",2)[0];
                 System.out.println("MAYBE NOT EMPTY:"+last+"/S");
                 if(last.equals("DOWNLOAD")){
                     System.out.println("Actual serverwriteer lim locking");
                     sdCloud.finishedDownloading();
                     System.out.println("ActualServerwritter lim locked");
                 }
+
                 out.write(r);
                 out.newLine();
                 out.flush();
-                last = r.split(" ",2)[0];
+
             } catch (IOException | InterruptedException e) { e.printStackTrace(); }
+
         }
     }
 }

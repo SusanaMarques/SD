@@ -1,11 +1,9 @@
 package Client;
-
 import com.google.common.io.Files;
 import org.apache.commons.codec.binary.Base64;
-import org.bouncycastle.util.encoders.UTF8;
 import java.io.*;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
+
 
 public class ClientWriter implements Runnable
 {
@@ -27,6 +25,7 @@ public class ClientWriter implements Runnable
         this.menu = m;
         this.socket = s;
         this.out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+
     }
 
     /**
@@ -35,7 +34,6 @@ public class ClientWriter implements Runnable
     @Override
     public void run() {
         int op;
-        menu.showMenu();
         try {
             while ((op = menu.op()) != -1) {
                 parsing(op);
@@ -56,20 +54,24 @@ public class ClientWriter implements Runnable
                     System.exit(0);
                 if (op == 1)
                     login();
-                if (op == 2)
+                 if (op == 2)
                     registration();
-                break;
+                 break;
             case 1:
                 if(op == 0)
                     logout();
-                if(op == 1)
+                 if(op == 1){
                     upload();
-                if(op == 2)
+                    }
+                  if(op == 2){
                     download();
-                if(op == 3)
+                    }
+                  if(op == 3){
                     search();
-                if(op == 4)
+                    }
+                 if(op == 4){
                     showLibrary();
+                    }
                 break;
         }
     }
@@ -85,6 +87,7 @@ public class ClientWriter implements Runnable
         out.write(q);
         out.newLine();
         out.flush();
+
     }
 
     /**
@@ -95,6 +98,7 @@ public class ClientWriter implements Runnable
         out.write("LOGOUT");
         out.newLine();
         out.flush();
+
     }
 
     /**
@@ -122,6 +126,7 @@ public class ClientWriter implements Runnable
         out.write(q);
         out.newLine();
         out.flush();
+
     }
 
     /**
@@ -136,11 +141,11 @@ public class ClientWriter implements Runnable
         String a = menu.readString("Artista:   \n");
         System.out.println("> Inserir as etiquetas separadas por virgulas e sem espaços     \n");
         String e = menu.readString("Etiquetas: \n");
-        String q = String.join(" ", "UPLOAD", y, t, a, e);
+        String q = String.join(" ", "UPLOAD", y, t, a, e,packager(path));
         out.write(q);
-        out.write(" "+packager(path));
         out.newLine();
         out.flush();
+
     }
 
     /** Método de codificação do ficheiro para transmitir
@@ -173,5 +178,6 @@ public class ClientWriter implements Runnable
         out.write("LIBRARY");
         out.newLine();
         out.flush();
+
     }
 }

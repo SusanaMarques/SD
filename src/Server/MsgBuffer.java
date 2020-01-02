@@ -21,15 +21,18 @@ public class MsgBuffer
      * Método que verifica se o buffer está vazio
      * @return           True caso o buffer esteja vazio, false caso contrário
      */
-    synchronized public boolean isEmpty() { return msg.size() == n; }
+    public synchronized boolean isEmpty() { return msg.size() == n; }
 
     /**
      * Método que escreve uma nova mensagem no buffer
      * @param message         Mensagem a adicionar ao buffer
      */
-    synchronized public void write(String message) {
+     public synchronized void write(String message) {
         msg.add(message);
         notifyAll();
+
+
+
     }
 
     /**
@@ -37,9 +40,9 @@ public class MsgBuffer
      * @return           Última mensagem escrita no buffer
      * @throws           InterruptedException
      */
-    synchronized public String read() throws InterruptedException {
-        while(isEmpty())
-            wait();
+     public synchronized String read() throws InterruptedException {
+         while(isEmpty())
+         wait();
         String message = msg.get(n);
         n += 1;
         return message;

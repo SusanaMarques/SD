@@ -17,11 +17,11 @@ public class SDCloud
     /** Utilizadores da cloud **/
     private Map<String, User> users;
     /** Lock do utilizador */
-    private Lock userLock;
+    private Lock userLock= new ReentrantLock();
     /** Biblioteca de musicas da cloud  **/
     private Map<Integer, Music> library;
     /** Lock da biblioteca de músicas da cloud */
-    private Lock libraryLock;
+    private Lock libraryLock = new ReentrantLock();
 
     private Lock sdCloudlock = new ReentrantLock();
 
@@ -37,9 +37,7 @@ public class SDCloud
      */
     public SDCloud(){
         this.users = new HashMap<>();
-        this.userLock = new ReentrantLock();
         this.library= new HashMap<>();
-        this.libraryLock= new ReentrantLock();
     }
 
     /**
@@ -108,30 +106,33 @@ public class SDCloud
         libraryLock.unlock();
         return id;
 
-        // gerar um id novo para a musica
-        //Music m = new Music(id, path, data, 1);
-        //library.put(id,m);
 
     }
 
     /**
      * Método que efetua uma pesquisa através das etiquetas passadas como parametro UNFINISHED
      * */
-    public void search(String tag) throws InvalidTagsException {
+    public String search(String tag) throws InvalidTagsException {
         libraryLock.lock();
+        String t="";
         try
         {
+
             Collection<Music> l = this.library.values();
-            ArrayList<Music> c = new ArrayList<>();
             for(Music m : l)
             {
                 Metadata data = m.getMetadata();
                 ArrayList<String> tags = data.getTags();
-                if(tags.contains(tag))
-                    c.add(m);
+                if(tags.contains(tag)) {
+                    //ret.append("         ").append("Titulo: ").append(data.getTitle()).append(" Artista: ").append(data.getArtist()).append(" Ano: ").append(data.getYear()).append("\n");
+                    t=t+"Titulo: "+data.getTitle()+"   Artista: "+ data.getArtist()+"   Ano: "+data.getYear()+"\n";
+                }
             }
-        } finally { libraryLock.unlock(); }
+        }
+        finally { libraryLock.unlock(); }
+        if(t=="") throw new Exceptions.InvalidTagsException("Tag não existe!");
 
+        return ("SEARCH    " + t);
     }
 
     /**
@@ -139,19 +140,27 @@ public class SDCloud
      * */
     public String showLibrary() throws Exceptions.EmptyLibraryException {
         libraryLock.lock();
-        StringBuilder ret= new StringBuilder().append("LIBRARY ").append( " Id Title " );
-        if (library.size() < 1)
-            throw new Exceptions.EmptyLibraryException("Biblioteca Vazia!");
+
+        String t="";
         try {
+
             for (Map.Entry<Integer, Music> e : library.entrySet()) {
                 String title = e.getValue().getMetadata().getTitle();
-                ret.append(e.getKey() + " " +  title);
+
+                t= t+ "Id: " + e.getKey() + "    Title: " + title + "\n";
+                //ret.append("         " + e.getKey() + "   " + title + "\n");
             }
+
+
         } finally {
             libraryLock.unlock();
         }
-    return ret.append("\n").toString();
+        if (library.size() < 1)
+            throw new Exceptions.EmptyLibraryException("Biblioteca Vazia!");
+
+    return ("LIBRARY    " + t);
     }
+
     public void lock(){
         sdCloudlock.lock();
     }

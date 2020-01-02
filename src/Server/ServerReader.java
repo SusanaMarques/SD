@@ -21,6 +21,8 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static java.nio.file.StandardCopyOption.*;
 
@@ -87,7 +89,7 @@ public class ServerReader implements Runnable
      * @throws Exceptions.UserExistsException
      * @throws InterruptedException
      */
-    private String parsing(String r) throws UserExistsException, InterruptedException, EmptyLibraryException, InvalidRequestException, InvalidTagsException, EmptyLibraryException, IOException, MusicDoesntExistException {
+    private  String parsing(String r) throws UserExistsException, InterruptedException, EmptyLibraryException, InvalidRequestException, InvalidTagsException, EmptyLibraryException, IOException, MusicDoesntExistException {
         System.out.println("ENTROU");
         String[] p = r.split(" ", 2);
         switch (p[0].toUpperCase()) {
@@ -105,7 +107,6 @@ public class ServerReader implements Runnable
                 return this.download(p[1]);
             case "UPLOAD":
                 return this.upload(p[1]);
-
             case "SEARCH":
                 return this.search(p[1]);
             case "LIBRARY":
@@ -233,17 +234,15 @@ public class ServerReader implements Runnable
         String[] p = in.split(" ");
         if (p.length > 1)
              throw new Exceptions.InvalidTagsException("Etiqueta Inválida");
-        sdCloud.search(p[0]);
-        return "SEARCH";
+        return sdCloud.search(p[0]);
     }
 
     /**
      * Método que mostra a biblioteca de músicas da cloud
      * @return         String
      */
-    private String showLibrary() throws EmptyLibraryException {
+    private String showLibrary() throws EmptyLibraryException, InterruptedException {
         return sdCloud.showLibrary();
-
     }
 
 }

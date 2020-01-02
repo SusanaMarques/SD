@@ -2,6 +2,8 @@ package Client;
 
 import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Menu
 {
@@ -16,11 +18,14 @@ public class Menu
     public Menu()
     {
         this.opt = 0;
+        this.showMenu();
         in = new Scanner(System.in);
+
+
     }
 
     /**
-     * Método que evolve o valor da opção.
+     * Método que devolve o valor da opção.
      * @return       Opção
      */
     public int getOpt(){ return this.opt; }
@@ -29,7 +34,9 @@ public class Menu
      * Método que altera o valor da opção
      * @param n         Novo valor da opção
      */
-    public void setOpt(int n){ this.opt = n; }
+    public void setOpt(int n){
+        this.opt = n;
+    }
 
 
     /**
@@ -55,6 +62,7 @@ public class Menu
                         "> Opção:                     ");
                 break;
         }
+
     }
 
     /**
