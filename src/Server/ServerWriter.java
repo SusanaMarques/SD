@@ -37,24 +37,17 @@ public class ServerWriter implements Runnable
         while (true) {
             try {
                 String r = msg.read();
-                System.out.println("MAYBE NOT EMPTY:"+last+"/S");
                 if(last.equals("DOWNLAST")){
-                    System.out.println("Actual serverwriteer lim locking");
                     sdCloud.finishedDownloading();
-                    System.out.println("ActualServerwritter lim locked");
                 }
                 if(last.equals("UPLOAD")){
-
-                    System.out.println("ActualServerwritter notifying"+ss[0]+ss[1]);
                     notifier.added(ss[1]);
                 }
-
                 out.write(r);
                 out.newLine();
                 out.flush();
                 ss = r.split(" ", 2);
                 last = ss[0];
-
             } catch (IOException | InterruptedException e) { e.printStackTrace(); }
 
         }

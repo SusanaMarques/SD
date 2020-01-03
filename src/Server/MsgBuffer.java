@@ -10,6 +10,7 @@ public class MsgBuffer
     private ArrayList<String> msg;
     /** Número de mensagens guardadas no buffer **/
     private int n;
+    /** Lock do buffer **/
     private Lock messageLock = new ReentrantLock();
 
     /**
@@ -48,10 +49,13 @@ public class MsgBuffer
         return message;
     }
 
-    public void unlock() {
-         messageLock.unlock();
-    }
-    public void lock() {
-        messageLock.lock();
-    }
+    /**
+     * Método que efetua o lock do buffer
+     */
+    public void unlock() { messageLock.unlock(); }
+
+    /**
+     * Método que efetua o unlock do buffer
+     */
+    public void lock() { messageLock.lock(); }
 }

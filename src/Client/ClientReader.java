@@ -16,7 +16,7 @@ public class ClientReader  implements Runnable
     private Socket socket;
     /** BufferedReader **/
     private BufferedReader in;
-
+    /** Path do ficheiro **/
     private String path;
 
     /**
@@ -84,9 +84,9 @@ public class ClientReader  implements Runnable
                 downfrag(p[1]);
                 break;
             case "NOTIFY":
-                System.out.print(p[1]);
-                //menu.setOpt(1);
-                //menu.showMenu();
+                String[] ntf = p[1].split(" ", 2);
+                System.out.print("\033[1m\033[48;5;174mUma Nova Música Foi Carregada Para A Cloud: \033[0m \033[0m " +
+                        "\033[1m Titulo: \033[0m" + ntf[0] + " " + "\033[1m Artista: \033[0m" + ntf[1] + "\n" );
                 break;
             case "SEARCH":
                 menu.setOpt(1);
@@ -105,26 +105,32 @@ public class ClientReader  implements Runnable
         }
     }
 
-    private void downfrag(String s) throws IOException {
-        SDNetwork.unfragger(s, this.path);
+    /** Método que fragmenta um ficheiro para download
+     * @param  s String
+     * @throws IOException
+     */
+    private void downfrag(String s) throws IOException { SDNetwork.unfragger(s, this.path); }
 
-    }
-
+    /**
+     * Método que efetua um download
+     * @param p
+     * @return
+     * @throws IOException
+     */
     private String download(String p) throws IOException {
         String[] s = p.split(" ", 5);
-
         System.out.flush();
         return "Download/" + s[1] + ".mp3";
     }
 
+    /**
+     * Método que altera [] para \n no comando recebido
+     * @param c
+     */
     private void repl(String c){
-        String[] a= c.split(" ",2);
+        String[] a = c.split(" ",2);
         String b = a[1].replace("[]","\n");
         System.out.println(b);
-
     }
-
-
-
 }
 

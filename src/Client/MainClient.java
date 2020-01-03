@@ -5,7 +5,6 @@ import java.net.Socket;
 
 public class MainClient
 {
-
     public static void main(String[] args){
         Socket s = null;
         try {

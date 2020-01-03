@@ -1,15 +1,9 @@
 package Client;
-import Exceptions.PathIncorrectException;
 import Server.SDNetwork;
-import Server.ServerWriter;
-import com.google.common.io.Files;
-import com.googlecode.mp4parser.util.Path;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.math3.ml.neuralnet.Network;
+import Exceptions.PathIncorrectException;
 
 import java.io.*;
 import java.net.Socket;
-import java.nio.file.Paths;
 
 
 public class ClientWriter implements Runnable
@@ -23,7 +17,6 @@ public class ClientWriter implements Runnable
 
     /**
      * Construtor da classe ClientWriter parametrizado
-     *
      * @param m         Menu de opções
      * @param s         Socket
      * @throws          IOException
@@ -32,7 +25,6 @@ public class ClientWriter implements Runnable
         this.menu = m;
         this.socket = s;
         this.out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-
     }
 
     /**
@@ -58,24 +50,20 @@ public class ClientWriter implements Runnable
                     System.exit(0);
                 if (op == 1)
                     login();
-                 if (op == 2)
+                if (op == 2)
                     registration();
-                 break;
+                break;
             case 1:
                 if(op == 0)
                     logout();
-                 if(op == 1){
+                if(op == 1)
                     upload();
-                    }
-                  if(op == 2){
+                if(op == 2)
                     download();
-                    }
-                  if(op == 3){
+                if(op == 3)
                     search();
-                    }
-                 if(op == 4){
+                if(op == 4)
                     showLibrary();
-                    }
                 break;
         }
     }
@@ -85,13 +73,12 @@ public class ClientWriter implements Runnable
      * @throws IOException
      */
     private void login() throws IOException{
-        String username = menu.readString("\033[1m\033[48;5;79m> Username:\033[0m\033[0m");
-        String password = menu.readString("\033[1m\033[48;5;79m> Password:\033[0m\033[0m");
+        String username = menu.readString("\033[1m\033[48;5;30m> Username:\033[0m\033[0m");
+        String password = menu.readString("\033[1m\033[48;5;30m> Password:\033[0m\033[0m");
         String q = String.join(" ", "LOGIN", username, password);
         out.write(q);
         out.newLine();
         out.flush();
-
     }
 
     /**
@@ -102,7 +89,6 @@ public class ClientWriter implements Runnable
         out.write("LOGOUT");
         out.newLine();
         out.flush();
-
     }
 
     /**
@@ -110,8 +96,8 @@ public class ClientWriter implements Runnable
      * @throws IOException
      */
     private void registration() throws IOException{
-        String username = menu.readString("\033[1m\033[48;5;79m> Username:\033[0m\033[0m");
-        String password = menu.readString("\033[1m\033[48;5;79m> Password:\033[0m\033[0m");
+        String username = menu.readString("\033[1m\033[48;5;30m> Username:\033[0m\033[0m");
+        String password = menu.readString("\033[1m\033[48;5;30m> Password:\033[0m\033[0m");
         String q = String.join(" ", "REGISTER", username, password);
         out.write(q);
         out.newLine();
@@ -125,11 +111,9 @@ public class ClientWriter implements Runnable
     private void download() throws IOException{
         String id = menu.readString("Id: ");
         String q = String.join(" ", "DOWNLOAD", id);
-
         out.write(q);
         out.newLine();
         out.flush();
-
     }
 
     /**
@@ -138,27 +122,27 @@ public class ClientWriter implements Runnable
      */
     private void upload() throws IOException, PathIncorrectException {
         String path = menu.readString("Path:");
-        System.out.println("\033[1m\033[48;5;79m> Inserir Metadados\033[0m\033[0m");
+        System.out.println("\033[1m\033[48;5;30m> Inserir Metadados\033[0m\033[0m");
         String y = menu.readString("Ano:");
         String t = menu.readString("Título:");
         String a = menu.readString("Artista:");
-        System.out.println("\033[1m\033[48;5;79m> Inserir as etiquetas separadas por virgulas e sem espaços\033[0m\033[0m");
+        System.out.println("\033[1m\033[48;5;30m> Inserir as etiquetas separadas por virgulas e sem espaços\033[0m\033[0m");
         String e = menu.readString("Etiquetas:");
-        File tmp= new File(path);
-        if(tmp.length()==0|| tmp.isDirectory()) throw new Exceptions.PathIncorrectException("\033[1m\033[48;5;79m>Path Incorreto!\033[0m\033[0m"); else {
-        String q = String.join(" ", "UPLOAD", y, t, a, e);
-        out.write(q);
-        out.newLine();
-        int lastfrag = ((int) tmp.length()/ (SDNetwork.MAXSIZE) ) + ((int)tmp.length()%(SDNetwork.MAXSIZE) == 0 ? 0 : 1 );
-        for(int i=0; i< lastfrag;i++) {
-            String frag = SDNetwork.fragger(path,i,lastfrag,"UPLOAD");
-            out.write(frag);
+        File tmp = new File(path);
+        if(tmp.length() == 0 || tmp.isDirectory()) throw new Exceptions.PathIncorrectException("\033[1m\033[48;5;30m>Path Incorreto!\033[0m\033[0m");
+        else {
+            String q = String.join(" ", "UPLOAD", y, t, a, e);
+            out.write(q);
             out.newLine();
-            out.flush();
+            int lastfrag = ((int) tmp.length()/(SDNetwork.MAXSIZE)) + ((int)tmp.length()%(SDNetwork.MAXSIZE) == 0 ? 0 : 1 );
+            for(int i = 0; i < lastfrag; i++) {
+                String frag = SDNetwork.fragger(path,i,lastfrag,"UPLOAD");
+                out.write(frag);
+                out.newLine();
+                out.flush();
+            }
         }
-
-    }}
-
+    }
 
     /**
      * Método que indica ao servidor que o utilizador pretende procurar uma música com determinado tag

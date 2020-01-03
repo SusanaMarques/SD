@@ -13,6 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class SDCloud
 {
+    /** Número maximo de downloads **/
     private static final int MAXDOWN = 2 ;
     /** Utilizadores da cloud **/
     private Map<String, User> users;
@@ -24,13 +25,12 @@ public class SDCloud
     private Lock libraryLock = new ReentrantLock();
     /** Lock da cloud **/
     private Lock sdCloudlock = new ReentrantLock();
-    /** **/
+    /** Número de clientes a fazer um download em determinado momento **/
     private int downloading = 0;
     /** Lock do download **/
     private Lock downlock = new ReentrantLock();
-    /** **/
+    /** Condição do download **/
     private Condition cd = downlock.newCondition();
-
 
 
     /**
@@ -63,7 +63,7 @@ public class SDCloud
         userLock.lock();
         try {
             if (users.containsKey(username))
-                throw new Exceptions.UserExistsException("\033[1m\033[48;5;79m> O utilizador já existe!\033[0m\033[0m");
+                throw new Exceptions.UserExistsException("\033[1m\033[48;5;30m> O utilizador já existe!\033[0m\033[0m");
             else
                 users.put(username, new User(username,password));
         } finally { userLock.unlock(); }
@@ -82,7 +82,7 @@ public class SDCloud
         userLock.lock();
         try {
             u = users.get(username);
-            if (u == null || !u.verifyPassword(password)) throw new Exceptions.InvalidRequestException("\033[1m\033[48;5;79m>Credenciais de Login Inválidas!\033[0m\033[0m");
+            if (u == null || !u.verifyPassword(password)) throw new Exceptions.InvalidRequestException("\033[1m\033[48;5;30m>Credenciais de Login Inválidas!\033[0m\033[0m");
             else u.setNotificacoes(msg);
         } finally { userLock.unlock(); }
         return u;
@@ -98,10 +98,10 @@ public class SDCloud
         libraryLock.lock();
         Music m;
         try{
-            if(!library.containsKey(id)) throw new MusicDoesntExistException("\033[1m\033[48;5;79m>Id Inválido!\033[0m\033[0m");
+            if(!library.containsKey(id)) throw new MusicDoesntExistException("\033[1m\033[48;5;30m>Id Inválido!\033[0m\033[0m");
             m = library.get(id);
             m.lock();
-            m.setnDownloads( m.getnDownloads()+1 );
+            m.setnDownloads( m.getnDownloads() + 1 );
             m.unlock();
             library.replace(id,m);
         }
@@ -127,19 +127,16 @@ public class SDCloud
         library.put(id, musica);
         libraryLock.unlock();
         return id;
-
-
     }
 
     /**
-     * Método que efetua uma pesquisa através das etiquetas passadas como parametro UNFINISHED
+     * Método que efetua uma pesquisa através das etiquetas passadas como parametro
      */
     public String search(String tag) throws InvalidTagsException {
         libraryLock.lock();
         String t="";
         try
         {
-
             Collection<Music> l = this.library.values();
             for(Music m : l)
             {
@@ -147,15 +144,18 @@ public class SDCloud
                 Metadata data = m.getMetadata();
                 ArrayList<String> tags = data.getTags();
                 if(tags.contains(tag)) {
-
-                    t=t+"Id: "+ m.getID()+" Titulo: "+data.getTitle()+"   Artista: "+ data.getArtist()+"   Ano: "+data.getYear()+ " Tags: "+ data.getTags().toString()+ " Número de downloads: "+ m.getnDownloads()+"[]";
+                    t = t + "\033[1m Id: \033[0m"+ m.getID()+
+                            "\033[1m Titulo: \033[0m"+data.getTitle()+
+                            "\033[1m   Artista: \033[0m"+ data.getArtist()+
+                            "\033[1m   Ano: \033[0m"+data.getYear()+
+                            "\033[1m Tags: \033[0m"+ data.getTags().toString()+
+                            "\033[1m Número de downloads: \033[0m"+ m.getnDownloads()+"[]";
                 }
                 m.unlock();
             }
         }
         finally { libraryLock.unlock(); }
-        if(t == "") throw new Exceptions.InvalidTagsException("\033[1m\033[48;5;79m> A etiqueta inserida não existe! \033[0m\033[0m");
-
+        if(t == "") throw new Exceptions.InvalidTagsException("\033[1m\033[48;5;30m> A etiqueta inserida não existe! \033[0m\033[0m");
         return ("SEARCH " + t);
     }
 
@@ -164,39 +164,35 @@ public class SDCloud
      */
     public String showLibrary() throws Exceptions.EmptyLibraryException {
         libraryLock.lock();
-        String t="";
+        String t= "\033[1m\033[48;5;30" + "[]" + "m> Biblioteca Da Cloud" + "\033[0m\033[0m" + "[]";
         try {
-
             for (Map.Entry<Integer, Music> e : library.entrySet()) {
                 e.getValue().lock();
                 String title = e.getValue().getMetadata().getTitle();
-
                 t = t + "Id: " + e.getKey() + "    Title: " + title + "[]";
                 e.getValue().unlock();
             }
         } finally { libraryLock.unlock(); }
-        if (library.size() < 1) throw new Exceptions.EmptyLibraryException("\033[1m\033[48;5;79m> Biblioteca Vazia!\033[0m\033[0m");
+        if (library.size() < 1) throw new Exceptions.EmptyLibraryException("\033[1m\033[48;5;30" +
+                "m> Biblioteca Vazia!\033[0m\033[0m");
         return ("LIBRARY " + t);
     }
 
 
     /**
-     * Método que ....
+     * Método que inicia um download, caso o número máximo de downloads simultaneos não esteja no limite
      */
     public void startingDownload() {
         downlock.lock();
         try {
-        while (downloading >= MAXDOWN) {
-            cd.await();
-        }
+            while (downloading >= MAXDOWN)
+                cd.await();
             downloading++;
-        } catch (InterruptedException e) { e.printStackTrace();}
-        finally {downlock.unlock(); }
-
+        } catch (InterruptedException e) { e.printStackTrace();} finally {downlock.unlock(); }
     }
 
     /**
-     * Método que ....
+     * Método que termina um download
      */
     public void finishedDownloading() {
         downlock.lock();

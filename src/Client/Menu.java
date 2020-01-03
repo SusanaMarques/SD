@@ -45,27 +45,27 @@ public class Menu
     public void showMenu() {
         switch (opt) {
             case 0:
-                System.out.println("\033[1m \033[38;5;79m " +
+                System.out.println("\033[1m \033[38;5;30m " +
                         " _    _    _    _    _    _    _  \n" +
                         "  / \\  / \\  / \\  / \\  / \\  / \\  / \\ \n" +
                         " ( S )( D )( C )( L )( O )( U )( D )\n" +
                         "  \\_/  \\_/  \\_/  \\_/  \\_/  \\_/  \\_/  \033[0m \033[0m");
-                System.out.println("\033[1m\033[38;5;79m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m  \n" +
+                System.out.println("\033[1m\033[38;5;30m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m  \n" +
                         "  1 - Iniciar Sessao         \n" +
                         "  2 - Registar utilizador    \n" +
                         "  0 - Sair                   \n" +
-                        "\033[1m\033[38;5;79m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m \n" +
-                        " \033[38;5;79m> Opção: \033[0m                     \n");
+                        "\033[1m\033[38;5;30m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m \n" +
+                        " \033[38;5;30m> Opção: \033[0m                     \n");
                 break;
             case 1:
-                System.out.print("\033[1m\033[38;5;79m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m  \n" +
+                System.out.print("\033[1m\033[38;5;30m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m  \n" +
                         "  1 - Upload de Música        \n" +
                         "  2 - Download de Música      \n" +
                         "  3 - Procurar Música          \n" +
                         "  4 - Biblioteca               \n" +
                         "  0 - Terminar Sessão                  \n" +
-                        "\033[1m\033[38;5;79m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m \n" +
-                        "\033[38;5;79m> Opção: \033[0m \033[0m                      \n");
+                        "\033[1m\033[38;5;30m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m \n" +
+                        "\033[38;5;30m> Opção: \033[0m \033[0m                      \n");
                 break;
         }
     }
@@ -77,8 +77,9 @@ public class Menu
     public int readOption()
     {
         int n;
-        try { n = Integer.parseInt(in.nextLine()); } catch (NumberFormatException e) {
-            System.out.println("\033[1m\033[48;5;79m> Opção Inválida, tente de novo:\033[0m\033[0m");
+        try {
+            n = Integer.parseInt(in.nextLine()); } catch (NumberFormatException e) {
+            System.out.println("\033[1m\033[48;5;30m> Não inseriu um inteiro, tente de novo:\033[0m\033[0m");
             n = -1;
         }
         return n;
@@ -101,20 +102,17 @@ public class Menu
     public Integer op() {
         int op = readOption();
         if (opt == 0) {
-            if (op < 0 || op > 2)
-            {
-                System.out.println("\033[1m\033[48;5;79m> Opção Inválida, tente de novo:\033[0m\033[0m");
+            while (op < 0 || op > 2) {
                 op = readOption();
             }
         }
         if(opt == 1)
         {
-            if (op < 0 || op > 4 )
-            {
-                System.out.println("\033[1m\033[48;5;79m> Opção Inválida, tente de novo:\033[0m\033[0m");
+            while (op < 0 || op > 4) {
                 op = readOption();
             }
         }
         return op;
     }
 }
+

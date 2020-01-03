@@ -4,6 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Music {
+
     /** ID livre **/
     private static int ID = 1;
     /** Id da música **/
@@ -27,7 +28,6 @@ public class Music {
 
     /**
      * Construtor da classe Musica parametrizado
-
      * @param data          Metadados do ficheiro
      * @param nDownloads    Número de downloads da música
      */
