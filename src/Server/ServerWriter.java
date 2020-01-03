@@ -34,7 +34,7 @@ public class ServerWriter implements Runnable
             try {
                 String r = msg.read();
                 System.out.println("MAYBE NOT EMPTY:"+last+"/S");
-                if(last.equals("DOWNLOAD")){
+                if(last.equals("DOWNLAST")){
                     System.out.println("Actual serverwriteer lim locking");
                     sdCloud.finishedDownloading();
                     System.out.println("ActualServerwritter lim locked");
@@ -43,7 +43,8 @@ public class ServerWriter implements Runnable
                 out.write(r);
                 out.newLine();
                 out.flush();
-                last = r.split(" ",2)[0];
+                String[] ss = r.split(" ", 2);
+                last = ss[0];
 
             } catch (IOException | InterruptedException e) { e.printStackTrace(); }
 

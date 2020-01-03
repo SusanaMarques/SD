@@ -80,6 +80,7 @@ public class ClientReader  implements Runnable
                 case "MORE":
                 break;
             case "DOWNFRAG":
+                menu.setOpt(1);
                 downfrag(p[1]);
                 break;
             case "SEARCH":
@@ -106,9 +107,7 @@ public class ClientReader  implements Runnable
 
     private String download(String p) throws IOException {
         String[] s = p.split(" ", 5);
-        System.out.println("download client reader");
-        //long var10000 = Thread.currentThread().getId();
-        System.out.println("CLIENT reader: "+path);
+
         System.out.flush();
         return "Download/" + s[1] + ".mp3";
     }

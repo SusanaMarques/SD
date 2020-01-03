@@ -20,7 +20,7 @@ public class SDNetwork {
         raf.read(ba);
         raf.close();
         String ret = op + " " + fragindex+" " + lastfrag+" ";
-        return ret+encode(ba)+"\n";
+        return ret+encode(ba);
     }
 
     public static String unfragger(String payload, String path) throws IOException {
@@ -28,7 +28,6 @@ public class SDNetwork {
         String[] ss = payload.split(" ", 3);
         int fragindex = Integer.parseInt(ss[0]);
         ba = decode(ss[2]);
-        System.out.println("unfragger path: "+ path);
         File f = new File(Paths.get(path).toString());
         RandomAccessFile raf = new RandomAccessFile(f, "rw");
         raf.seek(fragindex * MAXSIZE);
@@ -42,29 +41,12 @@ public class SDNetwork {
 
 
 
-
-
-/*
-        int allfrags =  (pack.length()/ ServerWriter.MAXSIZE) +
-                (((pack.length()%ServerWriter.MAXSIZE))==0 ? 0 : 1);
-
-        if(pack.length()> ServerWriter.MAXSIZE) {
-            for(int i=0,fragno=0;i<pack.length();fragno++) {
-                ret+=op+ fragno + " " + allfrags +" ";
-                ret += pack.substring(i,i+=ServerWriter.MAXSIZE);
-                ret+="\n";
-            }
-        }
-        return ret;
-        */
-
-
-
     private static String encode(byte[] ba) {
         return Base64.getEncoder().encodeToString(ba);
     }
 
     private static byte[] decode(String b64) {
+
         return Base64.getDecoder().decode(b64);
     }
 

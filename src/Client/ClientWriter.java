@@ -1,7 +1,9 @@
 package Client;
+import Exceptions.PathIncorrectException;
 import Server.SDNetwork;
 import Server.ServerWriter;
 import com.google.common.io.Files;
+import com.googlecode.mp4parser.util.Path;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.math3.ml.neuralnet.Network;
 
@@ -39,17 +41,17 @@ public class ClientWriter implements Runnable
     @Override
     public void run() {
         int op;
-        try {
             while ((op = menu.op()) != -1)
+                try {
                 parsing(op);
-        } catch (IOException e) { e.printStackTrace(); }
+        } catch (IOException | PathIncorrectException e) { System.out.println(e.getMessage()); menu.showMenu(); }
     }
 
     /**
      * Método que faz o parse da opção do menu recebida
      *@param op                Opção recebida
      */
-    private void parsing(Integer op) throws IOException{
+    private void parsing(Integer op) throws IOException, PathIncorrectException {
         switch (menu.getOpt()) {
             case 0:
                 if (op == 0)
@@ -124,7 +126,6 @@ public class ClientWriter implements Runnable
         String id = menu.readString("Id: ");
         String q = String.join(" ", "DOWNLOAD", id);
 
-        System.out.println("@clientwriter download");
         out.write(q);
         out.newLine();
         out.flush();
@@ -135,7 +136,7 @@ public class ClientWriter implements Runnable
      * Método que indica ao servidor que o utilizador pretende fazer upload de um ficheiro e os metadados do ficheiros
      * @throws IOException
      */
-    private void upload() throws IOException{
+    private void upload() throws IOException, PathIncorrectException {
         String path = menu.readString("Path:");
         System.out.println("> Inserir metadados");
         String y = menu.readString("Ano:");
@@ -144,15 +145,18 @@ public class ClientWriter implements Runnable
         System.out.println("> Inserir as etiquetas separadas por virgulas e sem espaços");
         String e = menu.readString("Etiquetas:");
         String q = String.join(" ", "UPLOAD", y, t, a, e);
+        File tmp= new File(path);
+        if(tmp.length()==0) throw new Exceptions.PathIncorrectException("Path incorreto!");
         out.write(q);
         out.newLine();
-        File tmp= new File(path);
         int lastfrag = ((int) tmp.length()/ (SDNetwork.MAXSIZE) ) + ((int)tmp.length()%(SDNetwork.MAXSIZE) == 0 ? 0 : 1 );
         for(int i=0; i< lastfrag;i++) {
             String frag = SDNetwork.fragger(path,i,lastfrag,"UPLOAD");
             out.write(frag);
+            out.newLine();
+            out.flush();
         }
-        out.flush();
+
     }
 
 

@@ -146,7 +146,7 @@ public class SDCloud
                 Metadata data = m.getMetadata();
                 ArrayList<String> tags = data.getTags();
                 if(tags.contains(tag)) {
-                    //ret.append("         ").append("Titulo: ").append(data.getTitle()).append(" Artista: ").append(data.getArtist()).append(" Ano: ").append(data.getYear()).append("\n");
+
                     t=t+"Id: "+ m.getID()+" Titulo: "+data.getTitle()+"   Artista: "+ data.getArtist()+"   Ano: "+data.getYear()+ " Tags: "+ data.getTags().toString()+ " Número de downloads: "+ m.getnDownloads()+"[]";
                 }
                 m.unlock();

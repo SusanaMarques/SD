@@ -193,7 +193,7 @@ public class ServerReader implements Runnable
 
         m.unlock();
 
-        send+="\n";
+      //  send+="\n";
         return send;
     }
     public void downfrag(String path) throws IOException {

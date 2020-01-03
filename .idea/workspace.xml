@@ -2,47 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ef49238-a75f-4cda-a4f9-1a516bac10d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SD.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Client/ClientReader.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Client/ClientWriter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Client/MainClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Client/Menu.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Exceptions/EmptyLibraryException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Exceptions/InvalidRequestException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Exceptions/InvalidTagsException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Exceptions/MusicDoesntExistException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Exceptions/ServerDoesntExistException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Exceptions/UserExistsException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/SD.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Server/MainServer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Server/Metadata.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Server/MsgBuffer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Server/Music.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Server/SDCloud.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Server/SDNetwork.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Server/ServerReader.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Server/ServerWriter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/Server/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/out/production/SD/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/out/production/SD/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/out/production/SD/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/out/production/SD/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/SD/out/production/SD/SD.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/SDNetwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/commons_codec_1_13_javadoc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/commons_codec_1_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/cxf_core_3_2_10.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/guava_annotations_r03.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/jar_files.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SD/Client/ClientReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SD/Client/ClientReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SD/Client/ClientWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SD/Client/ClientWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SD/Server/SDNetwork.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SD/Server/SDNetwork.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SD/Server/ServerReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SD/Server/ServerReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SD/Server/ServerWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SD/Server/ServerWriter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ClientReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ClientWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/SDCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/SDCloud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/SDNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/SDNetwork.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ServerReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ServerWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerWriter.java" afterDir="false" />
     </list>
@@ -81,7 +50,7 @@
       <recent name="Server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainServer">
+  <component name="RunManager" selected="Application.MainClient">
     <configuration name="MainClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client.MainClient" />
       <module name="SD" />
@@ -138,6 +107,7 @@
       <option name="presentableId" value="Default" />
       <updated>1577999549018</updated>
       <workItem from="1577999554642" duration="18230000" />
+      <workItem from="1578022092753" duration="8364000" />
     </task>
     <servers />
   </component>
@@ -149,7 +119,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -164,26 +136,26 @@
       <screen x="0" y="23" width="1440" height="795" />
     </state>
     <state x="100" y="123" width="1240" height="595" key="DiffContextDialog/0.23.1440.795@0.23.1440.795" timestamp="1578003559953" />
-    <state width="1398" height="196" key="GridCell.Tab.0.bottom" timestamp="1578021801350">
+    <state width="1398" height="207" key="GridCell.Tab.0.bottom" timestamp="1578051192246">
       <screen x="0" y="23" width="1440" height="795" />
     </state>
-    <state width="1398" height="196" key="GridCell.Tab.0.bottom/0.23.1440.795@0.23.1440.795" timestamp="1578021801350" />
-    <state width="1398" height="196" key="GridCell.Tab.0.center" timestamp="1578021801348">
+    <state width="1398" height="207" key="GridCell.Tab.0.bottom/0.23.1440.795@0.23.1440.795" timestamp="1578051192246" />
+    <state width="1398" height="207" key="GridCell.Tab.0.center" timestamp="1578051192244">
       <screen x="0" y="23" width="1440" height="795" />
     </state>
-    <state width="1398" height="196" key="GridCell.Tab.0.center/0.23.1440.795@0.23.1440.795" timestamp="1578021801348" />
-    <state width="1398" height="196" key="GridCell.Tab.0.left" timestamp="1578021801347">
+    <state width="1398" height="207" key="GridCell.Tab.0.center/0.23.1440.795@0.23.1440.795" timestamp="1578051192244" />
+    <state width="1398" height="207" key="GridCell.Tab.0.left" timestamp="1578051192243">
       <screen x="0" y="23" width="1440" height="795" />
     </state>
-    <state width="1398" height="196" key="GridCell.Tab.0.left/0.23.1440.795@0.23.1440.795" timestamp="1578021801347" />
-    <state width="1398" height="196" key="GridCell.Tab.0.right" timestamp="1578021801349">
+    <state width="1398" height="207" key="GridCell.Tab.0.left/0.23.1440.795@0.23.1440.795" timestamp="1578051192243" />
+    <state width="1398" height="207" key="GridCell.Tab.0.right" timestamp="1578051192245">
       <screen x="0" y="23" width="1440" height="795" />
     </state>
-    <state width="1398" height="196" key="GridCell.Tab.0.right/0.23.1440.795@0.23.1440.795" timestamp="1578021801349" />
-    <state x="767" y="190" width="667" height="486" key="find.popup" timestamp="1578021063934">
+    <state width="1398" height="207" key="GridCell.Tab.0.right/0.23.1440.795@0.23.1440.795" timestamp="1578051192245" />
+    <state x="732" y="177" width="696" height="486" key="find.popup" timestamp="1578050866283">
       <screen x="0" y="23" width="1440" height="795" />
     </state>
-    <state x="767" y="190" width="667" height="486" key="find.popup/0.23.1440.795@0.23.1440.795" timestamp="1578021063934" />
+    <state x="732" y="177" width="696" height="486" key="find.popup/0.23.1440.795@0.23.1440.795" timestamp="1578050866283" />
     <state x="385" y="142" width="670" height="676" key="search.everywhere.popup" timestamp="1578002329324">
       <screen x="0" y="23" width="1440" height="795" />
     </state>
