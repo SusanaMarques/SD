@@ -98,12 +98,15 @@ public class SDCloud
         libraryLock.lock();
         Music m;
         try{
-            if(!library.containsKey(id)) throw new MusicDoesntExistException("\033[1m\033[48;5;30m>Id Inválido!\033[0m\033[0m");
-            m = library.get(id);
-            m.lock();
-            m.setnDownloads( m.getnDownloads() + 1 );
-            m.unlock();
-            library.replace(id,m);
+            if(!library.containsKey(id)) throw new MusicDoesntExistException("\033[1m\033[48;5;30m >Id Inválido!\033[0m\033[0m");
+            else
+            {
+                m = library.get(id);
+                m.lock();
+                m.setnDownloads( m.getnDownloads() + 1 );
+                m.unlock();
+                library.replace(id,m);
+            }
         }
         finally {libraryLock.unlock(); }
         return m;
@@ -164,7 +167,7 @@ public class SDCloud
      */
     public String showLibrary() throws Exceptions.EmptyLibraryException {
         libraryLock.lock();
-        String t= "\033[1m\033[48;5;30" + "[]" + "m> Biblioteca Da Cloud" + "\033[0m\033[0m" + "[]";
+        String t= "\033[1m\033[48;5;30m" + " Biblioteca Da Cloud" + "\033[0m\033[0m" + "[]";
         try {
             for (Map.Entry<Integer, Music> e : library.entrySet()) {
                 e.getValue().lock();

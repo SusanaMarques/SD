@@ -171,17 +171,15 @@ public class ServerReader implements Runnable
     private String download(String in) throws MusicDoesntExistException, IOException {
         int id = 0;
         try { id = Integer.parseInt(in); } catch (NumberFormatException e){System.out.println("\033[1m\033[48;5;30m>Id Inválido!\033[0m\033[0m");}
-        sdCloud.lock();
         Music m = sdCloud.download(id);
         m.lock();
-        sdCloud.unlock();
         sdCloud.startingDownload();
         Metadata meta = m.getMetadata();
         String path = "Biblioteca/" + id + ".mp3";
 
         String send = path + " DOWNLOAD " + meta.getYear()+ " " + meta.getTitle() + " " + meta.getArtist() + " ";
         for(String tag: meta.getTags())
-            send+=tag+",";
+            send += tag + ",";
         m.unlock();
         return send;
     }

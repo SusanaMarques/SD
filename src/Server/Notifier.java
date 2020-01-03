@@ -1,6 +1,7 @@
 package Server;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -27,13 +28,17 @@ public class Notifier implements Runnable {
         }
         queueLock.lock();
         listLock.lock();
-        for(String m : queue){
-            for(MsgBuffer ms : list){
+        for(Iterator<String> iterator = queue.iterator(); iterator.hasNext();){
+            String m = iterator.next();
+            for(Iterator<MsgBuffer> it = list.iterator(); it.hasNext();){
+            MsgBuffer ms = it.next();
                 ms.lock();
                 String notif = "NOTIFY " + m;
                 ms.write(notif);
                 ms.unlock();
+                it.remove();
             }
+            iterator.remove();
             queue.remove(m);
         }
         queueLock.unlock();
