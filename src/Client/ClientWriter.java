@@ -144,9 +144,9 @@ public class ClientWriter implements Runnable
         String a = menu.readString("Artista:");
         System.out.println("\033[1m\033[48;5;79m> Inserir as etiquetas separadas por virgulas e sem espaços\033[0m\033[0m");
         String e = menu.readString("Etiquetas:");
-        String q = String.join(" ", "UPLOAD", y, t, a, e);
         File tmp= new File(path);
-        if(tmp.length()==0) throw new Exceptions.PathIncorrectException("\033[1m\033[48;5;79m>Path Incorreto!\033[0m\033[0m");
+        if(tmp.length()==0|| tmp.isDirectory()) throw new Exceptions.PathIncorrectException("\033[1m\033[48;5;79m>Path Incorreto!\033[0m\033[0m"); else {
+        String q = String.join(" ", "UPLOAD", y, t, a, e);
         out.write(q);
         out.newLine();
         int lastfrag = ((int) tmp.length()/ (SDNetwork.MAXSIZE) ) + ((int)tmp.length()%(SDNetwork.MAXSIZE) == 0 ? 0 : 1 );
@@ -157,7 +157,7 @@ public class ClientWriter implements Runnable
             out.flush();
         }
 
-    }
+    }}
 
 
     /**

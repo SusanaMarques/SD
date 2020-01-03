@@ -61,7 +61,7 @@ public class Menu
                 System.out.print("\033[1m\033[38;5;79m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m  \n" +
                         "  1 - Upload de Música        \n" +
                         "  2 - Download de Música      \n" +
-                        "  3 - Procuar Música          \n" +
+                        "  3 - Procurar Música          \n" +
                         "  4 - Biblioteca               \n" +
                         "  0 - Terminar Sessão                  \n" +
                         "\033[1m\033[38;5;79m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m \n" +

@@ -1,6 +1,8 @@
 package Server;
 
 import java.util.ArrayList;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class MsgBuffer
 {
@@ -8,6 +10,7 @@ public class MsgBuffer
     private ArrayList<String> msg;
     /** Número de mensagens guardadas no buffer **/
     private int n;
+    private Lock messageLock = new ReentrantLock();
 
     /**
      * Construtor da classe MsgBuffer sem parâmetros
@@ -43,5 +46,12 @@ public class MsgBuffer
         String message = msg.get(n);
         n += 1;
         return message;
+    }
+
+    public void unlock() {
+         messageLock.unlock();
+    }
+    public void lock() {
+        messageLock.lock();
     }
 }

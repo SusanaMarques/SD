@@ -83,6 +83,11 @@ public class ClientReader  implements Runnable
                 menu.setOpt(1);
                 downfrag(p[1]);
                 break;
+            case "NOTIFY":
+                System.out.print(p[1]);
+                //menu.setOpt(1);
+                //menu.showMenu();
+                break;
             case "SEARCH":
                 menu.setOpt(1);
                 repl(c);

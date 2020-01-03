@@ -7,6 +7,7 @@ import java.io.OutputStreamWriter;
 
 public class ServerWriter implements Runnable
 {
+    private Notifier notifier;
     private MsgBuffer msg;
     private BufferedWriter out;
     private SDCloud sdCloud;
@@ -16,12 +17,14 @@ public class ServerWriter implements Runnable
      * Construtor da classe ServerWriter parametrizado
      * @param msg      Buffer de mensagens
      * @param s       Socket
+     * @param nots
      * @throws         IOException
      */
-    ServerWriter(MsgBuffer msg, Socket s, SDCloud sdCloud) throws IOException {
+    ServerWriter(MsgBuffer msg, Socket s, SDCloud sdCloud, Notifier nots) throws IOException {
         this.msg = msg;
         this.out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
         this.sdCloud=sdCloud;
+        this.notifier = nots;
     }
 
     /**
@@ -30,6 +33,7 @@ public class ServerWriter implements Runnable
     @Override
     public  void run() {
         String last="";
+        String[] ss= new String[2];
         while (true) {
             try {
                 String r = msg.read();
@@ -39,11 +43,16 @@ public class ServerWriter implements Runnable
                     sdCloud.finishedDownloading();
                     System.out.println("ActualServerwritter lim locked");
                 }
+                if(last.equals("UPLOAD")){
+
+                    System.out.println("ActualServerwritter notifying"+ss[0]+ss[1]);
+                    notifier.added(ss[1]);
+                }
 
                 out.write(r);
                 out.newLine();
                 out.flush();
-                String[] ss = r.split(" ", 2);
+                ss = r.split(" ", 2);
                 last = ss[0];
 
             } catch (IOException | InterruptedException e) { e.printStackTrace(); }

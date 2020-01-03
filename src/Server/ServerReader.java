@@ -221,7 +221,7 @@ public class ServerReader implements Runnable
         int id = sdCloud.upload(ano,title,artist,tags);
         UPpath = "Biblioteca/"+id+".mp3";
 
-        return "UPLOAD";
+        return "UPLOAD "+title+" "+artist;
     }
     private String uploadFrag(String s) throws IOException {
         return "UPLFRAGNO "+ SDNetwork.unfragger(s, UPpath);
