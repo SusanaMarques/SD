@@ -3,17 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4ef49238-a75f-4cda-a4f9-1a516bac10d5" name="Default Changelist" comment="UPDATE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/ClientReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SD/Client/ClientWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SD/Client/ClientWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SD/Exceptions/PathIncorrectException.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ClientWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/MainClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/MainClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/MsgBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MsgBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Music.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Music.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Notifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Notifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/SDCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/SDCloud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/SDNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/SDNetwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exceptions/PathIncorrectException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/IncorrectPathException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +46,8 @@
       <recent name="Server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainClient">
-    <configuration name="MainClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.MainServer">
+    <configuration name="MainClient" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client.MainClient" />
       <module name="SD" />
       <extension name="coverage">
@@ -86,8 +79,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainClient" />
         <item itemvalue="Application.MainServer" />
+        <item itemvalue="Application.MainClient" />
       </list>
     </recent_temporary>
   </component>
@@ -118,7 +111,7 @@
       <workItem from="1578051656396" duration="1444000" />
       <workItem from="1578053162752" duration="2797000" />
       <workItem from="1578069358938" duration="6000" />
-      <workItem from="1578069434825" duration="11039000" />
+      <workItem from="1578069434825" duration="12374000" />
     </task>
     <servers />
   </component>
@@ -139,6 +132,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="184" y="113" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578084448421">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="113" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1578084448421" />
     <state x="494" y="312" width="451" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1578005784756">
       <screen x="0" y="23" width="1440" height="795" />
     </state>
@@ -147,25 +144,25 @@
       <screen x="0" y="23" width="1440" height="795" />
     </state>
     <state x="100" y="123" width="1240" height="595" key="DiffContextDialog/0.23.1440.795@0.23.1440.795" timestamp="1578003559953" />
-    <state width="1398" height="191" key="GridCell.Tab.0.bottom" timestamp="1578080782472">
+    <state width="1398" height="310" key="GridCell.Tab.0.bottom" timestamp="1578084978266">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="191" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578080782472" />
+    <state width="1398" height="310" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578084978266" />
     <state width="1398" height="207" key="GridCell.Tab.0.bottom/0.23.1440.795@0.23.1440.795" timestamp="1578051192246" />
-    <state width="1398" height="191" key="GridCell.Tab.0.center" timestamp="1578080782470">
+    <state width="1398" height="310" key="GridCell.Tab.0.center" timestamp="1578084978264">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="191" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578080782470" />
+    <state width="1398" height="310" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578084978264" />
     <state width="1398" height="207" key="GridCell.Tab.0.center/0.23.1440.795@0.23.1440.795" timestamp="1578051192244" />
-    <state width="1398" height="191" key="GridCell.Tab.0.left" timestamp="1578080782470">
+    <state width="1398" height="310" key="GridCell.Tab.0.left" timestamp="1578084978262">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="191" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578080782470" />
+    <state width="1398" height="310" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578084978262" />
     <state width="1398" height="207" key="GridCell.Tab.0.left/0.23.1440.795@0.23.1440.795" timestamp="1578051192243" />
-    <state width="1398" height="191" key="GridCell.Tab.0.right" timestamp="1578080782471">
+    <state width="1398" height="310" key="GridCell.Tab.0.right" timestamp="1578084978265">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="191" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578080782471" />
+    <state width="1398" height="310" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578084978265" />
     <state width="1398" height="207" key="GridCell.Tab.0.right/0.23.1440.795@0.23.1440.795" timestamp="1578051192245" />
     <state x="208" y="33" key="SettingsEditor" timestamp="1578051770575">
       <screen x="0" y="0" width="1440" height="900" />
@@ -180,6 +177,10 @@
     </state>
     <state x="408" y="173" width="739" height="551" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1578075988130" />
     <state x="732" y="177" width="696" height="486" key="find.popup/0.23.1440.795@0.23.1440.795" timestamp="1578050866283" />
+    <state x="385" y="210" key="run.anything.popup" timestamp="1578084388392">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1578084388392" />
     <state x="385" y="142" width="670" height="676" key="search.everywhere.popup" timestamp="1578002329324">
       <screen x="0" y="23" width="1440" height="795" />
     </state>

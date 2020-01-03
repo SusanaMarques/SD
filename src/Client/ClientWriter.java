@@ -1,6 +1,6 @@
 package Client;
 import Server.SDNetwork;
-import Exceptions.PathIncorrectException;
+import Exceptions.IncorrectPathException;
 
 import java.io.*;
 import java.net.Socket;
@@ -36,14 +36,14 @@ public class ClientWriter implements Runnable
             while ((op = menu.op()) != -1)
                 try {
                 parsing(op);
-        } catch (IOException | PathIncorrectException e) { System.out.println(e.getMessage()); menu.showMenu(); }
+        } catch (IOException | IncorrectPathException e) { System.out.println(e.getMessage()); menu.showMenu(); }
     }
 
     /**
      * Método que faz o parse da opção do menu recebida
      *@param op                Opção recebida
      */
-    private void parsing(Integer op) throws IOException, PathIncorrectException {
+    private void parsing(Integer op) throws IOException, IncorrectPathException {
         switch (menu.getOpt()) {
             case 0:
                 if (op == 0)
@@ -120,7 +120,7 @@ public class ClientWriter implements Runnable
      * Método que indica ao servidor que o utilizador pretende fazer upload de um ficheiro e os metadados do ficheiros
      * @throws IOException
      */
-    private void upload() throws IOException, PathIncorrectException {
+    private void upload() throws IOException, IncorrectPathException {
         String path = menu.readString("Path:");
         System.out.println("\033[1m\033[48;5;30m> Inserir Metadados\033[0m\033[0m");
         String y = menu.readString("Ano:");
@@ -129,7 +129,7 @@ public class ClientWriter implements Runnable
         System.out.println("\033[1m\033[48;5;30m> Inserir as etiquetas separadas por virgulas e sem espaços\033[0m\033[0m");
         String e = menu.readString("Etiquetas:");
         File tmp = new File(path);
-        if(tmp.length() == 0 || tmp.isDirectory()) throw new Exceptions.PathIncorrectException("\033[1m\033[48;5;30m>Path Incorreto!\033[0m\033[0m");
+        if(tmp.length() == 0 || tmp.isDirectory()) throw new IncorrectPathException("\033[1m\033[48;5;30m>Path Incorreto!\033[0m\033[0m");
         else {
             String q = String.join(" ", "UPLOAD", y, t, a, e);
             out.write(q);
