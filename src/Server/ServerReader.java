@@ -139,7 +139,7 @@ public class ServerReader implements Runnable
      */
     private String logout() {
         this.user = null;
-        return "ENDSESSION";
+        return "LOGOUT";
     }
 
     /**
@@ -174,7 +174,8 @@ public class ServerReader implements Runnable
      * @return         String
      */
     private String download(String in) throws MusicDoesntExistException, IOException {
-        int id = Integer.parseInt(in);
+        int id = 0;
+        try { id = Integer.parseInt(in); } catch (NumberFormatException e){System.out.println("\033[1m\033[48;5;79m>Id Inválido!\033[0m\033[0m");}
         System.out.println("@serverwriter download sd locking");
         sdCloud.lock();
         System.out.println("@serverwriter download sd locked");

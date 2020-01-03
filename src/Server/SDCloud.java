@@ -98,6 +98,7 @@ public class SDCloud
         libraryLock.lock();
         Music m;
         try{
+            if(!library.containsKey(id)) throw new MusicDoesntExistException("\033[1m\033[48;5;79m>Id Inválido!\033[0m\033[0m");
             m = library.get(id);
             m.lock();
             m.setnDownloads( m.getnDownloads()+1 );

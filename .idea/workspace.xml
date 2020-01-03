@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ef49238-a75f-4cda-a4f9-1a516bac10d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_math3_3_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/isoparser_1_1_22.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SD.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SD/Client/ClientWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SD/Client/ClientWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Biblioteca/1.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Biblioteca/1.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Download/1.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Download/1.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SD/Server/ServerReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SD/Server/ServerReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/ClientWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/MsgBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MsgBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/ClientReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/SDCloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/SDCloud.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ServerReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerReader.java" afterDir="false" />
     </list>
@@ -111,6 +107,7 @@
       <workItem from="1577999554642" duration="18230000" />
       <workItem from="1578022092753" duration="8364000" />
       <workItem from="1578051656396" duration="1444000" />
+      <workItem from="1578053162752" duration="2797000" />
     </task>
     <servers />
   </component>
@@ -139,37 +136,38 @@
       <screen x="0" y="23" width="1440" height="795" />
     </state>
     <state x="100" y="123" width="1240" height="595" key="DiffContextDialog/0.23.1440.795@0.23.1440.795" timestamp="1578003559953" />
-    <state width="1398" height="323" key="GridCell.Tab.0.bottom" timestamp="1578053106242">
+    <state width="1398" height="181" key="GridCell.Tab.0.bottom" timestamp="1578059759369">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="323" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578053106242" />
+    <state width="1398" height="181" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578059759369" />
     <state width="1398" height="207" key="GridCell.Tab.0.bottom/0.23.1440.795@0.23.1440.795" timestamp="1578051192246" />
-    <state width="1398" height="323" key="GridCell.Tab.0.center" timestamp="1578053106241">
+    <state width="1398" height="181" key="GridCell.Tab.0.center" timestamp="1578059759367">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="323" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578053106241" />
+    <state width="1398" height="181" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578059759367" />
     <state width="1398" height="207" key="GridCell.Tab.0.center/0.23.1440.795@0.23.1440.795" timestamp="1578051192244" />
-    <state width="1398" height="323" key="GridCell.Tab.0.left" timestamp="1578053106240">
+    <state width="1398" height="181" key="GridCell.Tab.0.left" timestamp="1578059759364">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="323" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578053106240" />
+    <state width="1398" height="181" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578059759364" />
     <state width="1398" height="207" key="GridCell.Tab.0.left/0.23.1440.795@0.23.1440.795" timestamp="1578051192243" />
-    <state width="1398" height="323" key="GridCell.Tab.0.right" timestamp="1578053106241">
+    <state width="1398" height="181" key="GridCell.Tab.0.right" timestamp="1578059759368">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="323" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578053106241" />
+    <state width="1398" height="181" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578059759368" />
     <state width="1398" height="207" key="GridCell.Tab.0.right/0.23.1440.795@0.23.1440.795" timestamp="1578051192245" />
     <state x="208" y="33" key="SettingsEditor" timestamp="1578051770575">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="208" y="33" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1578051770575" />
-    <state x="374" y="284" key="com.intellij.ide.util.TipDialog" timestamp="1578051655485">
+    <state x="374" y="284" key="com.intellij.ide.util.TipDialog" timestamp="1578053161881">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="374" y="284" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1578051655485" />
-    <state x="732" y="177" width="696" height="486" key="find.popup" timestamp="1578050866283">
-      <screen x="0" y="23" width="1440" height="795" />
+    <state x="374" y="284" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1578053161881" />
+    <state x="701" y="174" width="739" height="551" key="find.popup" timestamp="1578055372572">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="701" y="174" width="739" height="551" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1578055372572" />
     <state x="732" y="177" width="696" height="486" key="find.popup/0.23.1440.795@0.23.1440.795" timestamp="1578050866283" />
     <state x="385" y="142" width="670" height="676" key="search.everywhere.popup" timestamp="1578002329324">
       <screen x="0" y="23" width="1440" height="795" />

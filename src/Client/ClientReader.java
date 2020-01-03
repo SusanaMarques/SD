@@ -58,7 +58,7 @@ public class ClientReader  implements Runnable
                 menu.setOpt(0);
                 menu.showMenu();
                 break;
-            case "ENDSESSION":
+            case "LOGOUT":
                 menu.setOpt(0);
                 menu.showMenu();
                 break;
