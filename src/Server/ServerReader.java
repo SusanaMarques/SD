@@ -73,7 +73,7 @@ public class ServerReader implements Runnable
     private String readLine() {
         String l = null;
         try { l = in.readLine();
-        } catch (IOException e) { System.out.println("Não foi possível ler novas mensagens"); }
+        } catch (IOException e) { System.out.println("\033[1m\033[48;5;79m> Não foi possivel ler novas mensagens! \033[0m\033[0m"); }
         return l;
     }
 
@@ -127,7 +127,7 @@ public class ServerReader implements Runnable
      */
     private String login(String in) throws InvalidRequestException {
         String[] p = in.split(" ");
-        if (p.length != 2) throw new InvalidRequestException("Credenciais Erradas!");
+        if (p.length != 2) throw new InvalidRequestException("\033[1m\033[48;5;79m> Credenciais Erradas!\033[0m\033[0m");
         this.user = sdCloud.login(p[0], p[1],msg);
         return "AUTENTICATED";
     }
@@ -151,7 +151,7 @@ public class ServerReader implements Runnable
      */
     private String registration(String in) throws InvalidRequestException, UserExistsException {
         String[] p = in.split(" ");
-        if (p.length != 2) throw new InvalidRequestException("Credenciais Erradas!");
+        if (p.length != 2) throw new InvalidRequestException("\033[1m\033[48;5;79m> Credenciais Erradas!\033[0m\033[0m");
         sdCloud.registration(p[0], p[1]);
         return "REGISTER";
     }
@@ -163,9 +163,9 @@ public class ServerReader implements Runnable
      */
     private void autentication(Boolean status) throws InvalidRequestException {
         if (status && user == null)
-            throw new InvalidRequestException("Acesso negado");
+            throw new InvalidRequestException("\033[1m\033[48;5;79m> Acesso negado!\033[0m\033[0m");
         if (!status && user != null)
-            throw new InvalidRequestException("Já existe um utilizador autenticado");
+            throw new InvalidRequestException("\033[1m\033[48;5;79m> Já existe um utilizador autenticado!\033[0m\033[0m");
     }
 
     /**
@@ -236,7 +236,7 @@ public class ServerReader implements Runnable
     private String search(String in) throws Exceptions.InvalidTagsException {
         String[] p = in.split(" ");
         if (p.length > 1)
-             throw new Exceptions.InvalidTagsException("Etiqueta Inválida");
+             throw new Exceptions.InvalidTagsException("\033[1m\033[48;5;79m> Etiqueta inválida!\033[0m\033[0m");
         return sdCloud.search(p[0]);
     }
 

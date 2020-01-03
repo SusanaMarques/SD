@@ -30,9 +30,6 @@ public class MsgBuffer
      public synchronized void write(String message) {
         msg.add(message);
         notifyAll();
-
-
-
     }
 
     /**

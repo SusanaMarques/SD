@@ -63,7 +63,7 @@ public class SDCloud
         userLock.lock();
         try {
             if (users.containsKey(username))
-                throw new Exceptions.UserExistsException("O utilizador já existe");
+                throw new Exceptions.UserExistsException("\033[1m\033[48;5;79m> O utilizador já existe!\033[0m\033[0m");
             else
                 users.put(username, new User(username,password));
         } finally { userLock.unlock(); }
@@ -82,7 +82,7 @@ public class SDCloud
         userLock.lock();
         try {
             u = users.get(username);
-            if (u == null || !u.verifyPassword(password)) throw new Exceptions.InvalidRequestException("Credenciais de Login Inválidas!");
+            if (u == null || !u.verifyPassword(password)) throw new Exceptions.InvalidRequestException("\033[1m\033[48;5;79m>Credenciais de Login Inválidas!\033[0m\033[0m");
             else u.setNotificacoes(msg);
         } finally { userLock.unlock(); }
         return u;
@@ -153,7 +153,7 @@ public class SDCloud
             }
         }
         finally { libraryLock.unlock(); }
-        if(t == "") throw new Exceptions.InvalidTagsException("Tag não existe!");
+        if(t == "") throw new Exceptions.InvalidTagsException("\033[1m\033[48;5;79m> A etiqueta inserida não existe! \033[0m\033[0m");
 
         return ("SEARCH " + t);
     }
@@ -174,7 +174,7 @@ public class SDCloud
                 e.getValue().unlock();
             }
         } finally { libraryLock.unlock(); }
-        if (library.size() < 1) throw new Exceptions.EmptyLibraryException("Biblioteca Vazia!");
+        if (library.size() < 1) throw new Exceptions.EmptyLibraryException("\033[1m\033[48;5;79m> Biblioteca Vazia!\033[0m\033[0m");
         return ("LIBRARY " + t);
     }
 

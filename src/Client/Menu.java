@@ -45,24 +45,29 @@ public class Menu
     public void showMenu() {
         switch (opt) {
             case 0:
-                System.out.println(">> MENU <<        \n" +
-                        "> 1 - Iniciar Sessao         \n" +
-                        "> 2 - Registar utilizador    \n" +
-                        "> 0 - Sair                   \n\n"  +
-                        "> Opção:                      ");
+                System.out.println("\033[1m \033[38;5;79m " +
+                        " _    _    _    _    _    _    _  \n" +
+                        "  / \\  / \\  / \\  / \\  / \\  / \\  / \\ \n" +
+                        " ( S )( D )( C )( L )( O )( U )( D )\n" +
+                        "  \\_/  \\_/  \\_/  \\_/  \\_/  \\_/  \\_/  \033[0m \033[0m");
+                System.out.println("\033[1m\033[38;5;79m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m  \n" +
+                        "  1 - Iniciar Sessao         \n" +
+                        "  2 - Registar utilizador    \n" +
+                        "  0 - Sair                   \n" +
+                        "\033[1m\033[38;5;79m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m \n" +
+                        " \033[38;5;79m> Opção: \033[0m                     \n");
                 break;
-
             case 1:
-                System.out.println(">> MENU <<        \n" +
-                        "> 1 - Upload de música       \n" +
-                        "> 2 - Download de música     \n" +
-                        "> 3 - Procurar música        \n" +
-                        "> 4 - Biblioteca             \n" +
-                        "> 0 - Terminar Sessão        \n\n" +
-                        "> Opção:                     ");
+                System.out.print("\033[1m\033[38;5;79m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m  \n" +
+                        "  1 - Upload de Música        \n" +
+                        "  2 - Download de Música      \n" +
+                        "  3 - Procuar Música          \n" +
+                        "  4 - Biblioteca               \n" +
+                        "  0 - Terminar Sessão                  \n" +
+                        "\033[1m\033[38;5;79m- - - - - - - - - - - - - - - - - - -\033[0m \033[0m \n" +
+                        "\033[38;5;79m> Opção: \033[0m \033[0m                      \n");
                 break;
         }
-
     }
 
     /**
@@ -73,7 +78,7 @@ public class Menu
     {
         int n;
         try { n = Integer.parseInt(in.nextLine()); } catch (NumberFormatException e) {
-            System.out.println("\n> Valor inválido, tente de novo: \n");
+            System.out.println("\033[1m\033[48;5;79m> Opção Inválida, tente de novo:\033[0m\033[0m");
             n = -1;
         }
         return n;
@@ -98,7 +103,7 @@ public class Menu
         if (opt == 0) {
             if (op < 0 || op > 2)
             {
-                System.out.println("> Opção Inválida, tente de novo: ");
+                System.out.println("\033[1m\033[48;5;79m> Opção Inválida, tente de novo:\033[0m\033[0m");
                 op = readOption();
             }
         }
@@ -106,7 +111,7 @@ public class Menu
         {
             if (op < 0 || op > 4 )
             {
-                System.out.println("> Opção Inválida, tente de novo: ");
+                System.out.println("\033[1m\033[48;5;79m> Opção Inválida, tente de novo:\033[0m\033[0m");
                 op = readOption();
             }
         }
