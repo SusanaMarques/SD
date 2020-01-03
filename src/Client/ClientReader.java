@@ -1,13 +1,11 @@
 package Client;
 
-import Server.ServerReader;
+import Server.SDNetwork;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 
 public class ClientReader  implements Runnable
@@ -18,6 +16,8 @@ public class ClientReader  implements Runnable
     private Socket socket;
     /** BufferedReader **/
     private BufferedReader in;
+
+    private String path;
 
     /**
      * Construtor da classe ClientReader parametrizado
@@ -68,7 +68,19 @@ public class ClientReader  implements Runnable
                 break;
             case "DOWNLOAD":
                 menu.setOpt(1);
-                download(p[1]);
+                this.path= this.download(p[1]);
+                menu.showMenu();
+                break;
+            case "UPLFRAGNO":
+                break;
+            case "DOWNLAST":
+                break;
+            case "LAST":
+                break;
+                case "MORE":
+                break;
+            case "DOWNFRAG":
+                downfrag(p[1]);
                 break;
             case "SEARCH":
                 menu.setOpt(1);
@@ -87,12 +99,18 @@ public class ClientReader  implements Runnable
         }
     }
 
-    private void download(String p) throws IOException {
+    private void downfrag(String s) throws IOException {
+        SDNetwork.unfragger(s, this.path);
+
+    }
+
+    private String download(String p) throws IOException {
         String[] s = p.split(" ", 5);
         System.out.println("download client reader");
-        long var10000 = Thread.currentThread().getId();
-        String path = var10000 + "/" + s[1] + ".mp3";
-        ServerReader.unpackager(path, s[4]);
+        //long var10000 = Thread.currentThread().getId();
+        System.out.println("CLIENT reader: "+path);
+        System.out.flush();
+        return "Download/" + s[1] + ".mp3";
     }
 
     private void repl(String c){

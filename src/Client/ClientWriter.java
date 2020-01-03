@@ -1,9 +1,13 @@
 package Client;
+import Server.SDNetwork;
 import Server.ServerWriter;
 import com.google.common.io.Files;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.math3.ml.neuralnet.Network;
+
 import java.io.*;
 import java.net.Socket;
+import java.nio.file.Paths;
 
 
 public class ClientWriter implements Runnable
@@ -139,39 +143,18 @@ public class ClientWriter implements Runnable
         String a = menu.readString("Artista:");
         System.out.println("> Inserir as etiquetas separadas por virgulas e sem espaços");
         String e = menu.readString("Etiquetas:");
-        String q = String.join(" ", "UPLOAD", y, t, a, e,packager(path));
-
-        String frags = fragger(packager(path));
-        out.write(frags);
+        String q = String.join(" ", "UPLOAD", y, t, a, e);
         out.write(q);
         out.newLine();
+        File tmp= new File(path);
+        int lastfrag = ((int) tmp.length()/ (SDNetwork.MAXSIZE) ) + ((int)tmp.length()%(SDNetwork.MAXSIZE) == 0 ? 0 : 1 );
+        for(int i=0; i< lastfrag;i++) {
+            String frag = SDNetwork.fragger(path,i,lastfrag,"UPLOAD");
+            out.write(frag);
+        }
         out.flush();
     }
 
-    private String fragger(String pack) {
-        String ret="";
-        int allfrags =  (pack.length()/ServerWriter.MAXSIZE) +
-                (((pack.length()%ServerWriter.MAXSIZE))==0 ? 0 : 1);
-
-        if(pack.length()> ServerWriter.MAXSIZE) {
-            for(int i=0,fragno=0;i<pack.length();fragno++) {
-                ret+="UPLFRAG " + fragno + " " + allfrags +" ";
-                ret += pack.substring(i,i+=ServerWriter.MAXSIZE);
-                ret+="\n";
-            }
-        }
-        return ret;
-    }
-
-    /** Método de codificação do ficheiro para transmitir
-     * @param path Path do fString artist = s[2];icheiro a enviar
-    **/
-    public static String packager(String path) throws IOException {
-        File f = new File(path);
-        byte[] ba = Files.toByteArray(f);
-        String ret = Base64.encodeBase64String(ba);
-        return ret;
-    }
 
     /**
      * Método que indica ao servidor que o utilizador pretende procurar uma música com determinado tag

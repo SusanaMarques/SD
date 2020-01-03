@@ -11,7 +11,6 @@ public class ServerWriter implements Runnable
     private BufferedWriter out;
     private SDCloud sdCloud;
 
-    public static int MAXSIZE = 1000;
 
     /**
      * Construtor da classe ServerWriter parametrizado

@@ -5,26 +5,18 @@ import Client.ClientWriter;
 import Exceptions.*;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.cxf.endpoint.Server;
 
-import java.io.*;
+import java.io.File;
 import java.net.Socket;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
-import static java.nio.file.StandardCopyOption.*;
 
 public class ServerReader implements Runnable
 {
@@ -38,6 +30,8 @@ public class ServerReader implements Runnable
     private MsgBuffer msg;
     /** BufferedReader **/
     private BufferedReader in;
+
+    private String UPpath;
 
     /**
      * Construtor da classe ServerReader parametrizado
@@ -58,7 +52,7 @@ public class ServerReader implements Runnable
     public void run() {
         String r;
         while ((r = readLine()) != null) {
-            try { msg.write(parsing(r)); } catch (IndexOutOfBoundsException e) { msg.write("WRONG"); }
+            try { msg.write(parsing(r)); } catch (IndexOutOfBoundsException e) { msg.write("WRONG"); e.printStackTrace(); }
             catch (InvalidRequestException | InvalidTagsException | EmptyLibraryException | UserExistsException | InterruptedException | MusicDoesntExistException| IOException e) { msg.write(e.getMessage()); }
         }
         // endConnection();
@@ -104,10 +98,14 @@ public class ServerReader implements Runnable
                 return this.registration(p[1]);
             case "DOWNLOAD":
                 System.out.println("parsing server reader");
-                return this.download(p[1]);
+                 String[] ss= this.download(p[1]).split(" ",2);
+                 msg.write(ss[1]);
+                 downfrag(ss[0]);
+                return "DOWNLAST";
             case "UPLOAD":
+                System.out.println("BUG?: "+p[1]);
                 return this.upload(p[1]);
-            case "UPLFRAG":
+            case "UPFRAG":
                 return this.uploadFrag(p[1]);
             case "SEARCH":
                 return this.search(p[1]);
@@ -119,9 +117,7 @@ public class ServerReader implements Runnable
         }
     }
 
-    private void uploadFrag(String s) {
 
-    }
 
     /**
      * Método que efetua o login
@@ -189,15 +185,24 @@ public class ServerReader implements Runnable
         sdCloud.startingDownload();
         Metadata meta = m.getMetadata();
         String path = "Biblioteca/" +id+".mp3";
-        String b64 = ClientWriter.packager(path);
-        String send ="DOWNLOAD "+meta.getYear()+" "+meta.getTitle()+" "+meta.getArtist()+" ";
-        m.unlock();
 
+
+        String send =path+" DOWNLOAD "+meta.getYear()+" "+meta.getTitle()+" "+meta.getArtist()+" ";
         for(String tag: meta.getTags())
             send+=tag+",";
 
-        send+=" "+b64+"\n";
+        m.unlock();
+
+        send+="\n";
         return send;
+    }
+    public void downfrag(String path) throws IOException {
+        File tmp= new File(path);
+        int lastfrag = ((int) tmp.length()/ (SDNetwork.MAXSIZE) ) + ((int)tmp.length()%(SDNetwork.MAXSIZE) == 0 ? 0 : 1 );
+        for(int i=0; i< lastfrag;i++) {
+            String frag = SDNetwork.fragger(path,i,lastfrag,"DOWNLOAD");
+            msg.write(frag);
+        }
     }
 
     /**
@@ -206,34 +211,22 @@ public class ServerReader implements Runnable
      * @return              String
      */
     private String upload(String payload) throws IOException {
-        String[] s = payload.split(" ",5);
+        String[] s = payload.split(" ",4);
         String title = (s[1].isEmpty() ? "" + new Random().nextInt() : s[1]);
         int ano=0;
         try{ano = Integer.parseInt(s[0]);} catch (Exception e){}
         String artist = s[2];
         String tags = s[3];
         int id = sdCloud.upload(ano,title,artist,tags);
-        String path = "Biblioteca/"+id+".mp3";
-        unpackager(path,s[4]);
+        UPpath = "Biblioteca/"+id+".mp3";
 
         return "UPLOAD";
     }
-
-    /**
-     * Método que ....
-     * @param path
-     * @param data64
-     * @throws IOException
-     */
-    public static void unpackager(String path, String data64) throws IOException {
-        System.out.println("unpackager1");
-        byte[] ba = Base64.decodeBase64(data64);
-        System.out.println("unpackager1");
-        Path pt = Paths.get(path);
-        System.out.println("SERver reader unpackagerPt: " + pt.toString());
-        Files.createDirectories(pt.getParent());
-        Files.write(pt, ba, StandardOpenOption.WRITE,StandardOpenOption.CREATE,StandardOpenOption.CREATE_NEW);
+    private String uploadFrag(String s) throws IOException {
+        return "UPLFRAGNO "+ SDNetwork.unfragger(s, UPpath);
     }
+
+
 
     /**
      * Método que procura músicas consoante as etiquetas recebidas
